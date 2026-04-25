@@ -1,0 +1,13 @@
+{
+  "ignorePatterns": [],
+  "printWidth": 100,
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "options": {
+        "tabWidth": 2,
+        "proseWrap": "always"
+      }
+    }
+  ]
+}
