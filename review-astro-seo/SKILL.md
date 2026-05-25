@@ -1,9 +1,9 @@
 ---
 name: review-astro-seo
 description:
-  Audit Astro websites for SEO compliance using Astro SEO best practices. Use this skill
-  whenever the user asks to review, audit, check, or improve SEO for an Astro site, mentions Astro
-  SEO, structured data, canonical URLs, sitemaps, robots.txt, Pagefind, llms.txt, JSON-LD, Core Web
+  Audit Astro websites for SEO compliance using Astro SEO best practices. Use this skill whenever
+  the user asks to review, audit, check, or improve SEO for an Astro site, mentions Astro SEO,
+  structured data, canonical URLs, sitemaps, robots.txt, Pagefind, llms.txt, JSON-LD, Core Web
   Vitals, or wants to optimize an Astro site for search engines or AI crawlers. Make sure to trigger
   this skill even if the user doesn't explicitly mention "SEO audit" but is working on an Astro
   site's metadata, schema, crawlability, or indexing.
@@ -12,8 +12,8 @@ description:
 # Review Astro SEO
 
 Audit Astro-based websites against comprehensive Astro SEO best practices, covering 20 key tactics
-ranked by impact for both traditional search engines and AI crawlers. This skill guides you through a
-structured audit, explains why each tactic matters, and helps you deliver actionable fixes.
+ranked by impact for both traditional search engines and AI crawlers. This skill guides you through
+a structured audit, explains why each tactic matters, and helps you deliver actionable fixes.
 
 ## Pre-Audit Check
 
@@ -52,8 +52,8 @@ your ranking signal. Canonical URLs collapse these into a single authoritative U
 - Ensure titles do not exactly match the page's `<h1>` (titles are for SERPs, H1s for the page
   itself)
 - **Common issue**: Generic titles like "Welcome to my blog"
-- **Fix**: Use descriptive, keyword-first titles (e.g., "Astro SEO Checklist: 20 Tactics Ranked
-  by Impact")
+- **Fix**: Use descriptive, keyword-first titles (e.g., "Astro SEO Checklist: 20 Tactics Ranked by
+  Impact")
 
 ### 3. Article/BlogPosting JSON-LD with Person & Validation
 
@@ -116,8 +116,8 @@ crawler access, and AI crawlers need explicit allow rules to index your content.
 - Check `@astrojs/sitemap` is installed and added to `astro.config.mjs` integrations
 - Verify `sitemap-index.xml` is referenced in `public/robots.txt` via
   `Sitemap: https://<your-site>/sitemap-index.xml`
-- Check `robots.txt` includes allow rules for AI crawlers (see
-  `references/robots-template.txt` for the full list)
+- Check `robots.txt` includes allow rules for AI crawlers (see `references/robots-template.txt` for
+  the full list)
 - **Common issue**: Missing AI crawlers in `robots.txt`
 - **Fix**: Install `@astrojs/sitemap`, configure it in `astro.config.mjs`, and update `robots.txt`
   with the crawler list from the reference file
