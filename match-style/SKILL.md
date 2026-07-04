@@ -1,17 +1,14 @@
 ---
 name: match-style
-description: >
-  Learn a reference's style and apply it to a new task. Use when the user provides an example and
-  asks for something "like this", "in this style", or "matching this".
+description:
+  Mimic a reference's patterns in new content. Use when the user provides an example and asks for
+  something "like this".
 ---
 
-Analyze the reference for structure, naming, patterns, and voice.
+Extract the reference's structure, naming, and compositional choices.
 
-Generate new content that matches these characteristics while changing the underlying content to fit
-the new task.
+Apply them to the new task without copying specific content.
 
-Do not copy or reuse specific content from the reference.
+Infer missing details from the closest consistent choice.
 
-If the reference omits a detail, infer the closest consistent choice.
-
-If you intentionally diverge from the style, note it in a single line.
+Note any intentional divergence in one line.
