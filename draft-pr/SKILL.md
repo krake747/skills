@@ -32,6 +32,9 @@ its place.
   each chunk. These become the Key decisions and Risks sections.
 - **Append to the draft after each approval.** Add that chunk's approved facts to the running PR
   description and show it, so the user corrects early instead of at the end.
+- **Flag judgment calls.** List every decision you made on your own: naming, scope cuts, invented
+  details, where things went, what you left out on purpose. These feed Key decisions and Risks, or
+  get flagged for the user to veto before merge.
 - **Never use the question tool.** The user responds in their own words; options would bias the
   approval.
 
@@ -81,5 +84,6 @@ order.
 - The description must read so a stranger with a PR link understands the end, the approach, and the
   risk. Code is a means to an end; the description names the end.
 - Correctness and readability beat speed. Flag a simpler change when the code allows one.
+- Skip anything the user spelled out.
 
 Include any extra context the user gave in the request.

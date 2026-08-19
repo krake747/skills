@@ -1,0 +1,3 @@
+interface:
+  display_name: "Happy Path First"
+  short_description: "Write code happy-path-first with guard clauses and deep modules"
