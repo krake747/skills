@@ -23,3 +23,6 @@ plug into that loop where it has gaps, detailed below.
   Complements codebase-design and implement.
 - **[debrief](debrief/SKILL.md).** After a long session, list the decisions the agent made on its
   own judgment. Complements code-review, which reviews the diff rather than the session.
+- **[draft-pr](draft-pr/SKILL.md).** Draft a PR description by walking the diff in small approved
+  chunks; each chunk feeds the draft. Complements code-review, which checks the diff rather than
+  writing the PR's story.
