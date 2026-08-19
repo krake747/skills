@@ -12,3 +12,4 @@ not cover.
 - Every skill has a README entry linking to its `SKILL.md` and naming the mattpocock skill it
   complements.
 - Run `pnpm fmt:check` before finishing; `pnpm fmt` to fix.
+- Test a skill by running it. An untested rule is a hypothesis.

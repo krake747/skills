@@ -8,7 +8,7 @@ description: >-
 
 # Plan First
 
-Plan first. Code second. Every significant piece of work runs one loop:
+Plan first. Code second. Anything bigger than a one-line fix runs one loop:
 
 A plan takes seconds to change, code takes minutes. Agree the approach while it is cheap.
 

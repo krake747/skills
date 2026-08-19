@@ -14,9 +14,16 @@ diff reviewable. Divergence is a statement: say it out loud and justify it.
 
 ## Process
 
-1. Find the reference. The closest existing code doing something like the new task. No sibling? Use
-   the closest analog in a neighbouring directory. No analog at all? The convention is yours to set,
-   and you flag it as a divergence.
+1. Find the reference.
+
+   ```ascii
+   Closest existing code doing something like the task?
+   ├── Yes → that is the reference
+   └── No
+       ├── Analog in a neighbouring directory? → closest one is the reference
+       └── No analog at all? → the convention is yours to set; flag it as a divergence
+   ```
+
 2. Read how it is put together. Where the file lives, how it is named, how it opens and closes,
    imports, exports, types, error handling, tests. What repeats across siblings is convention. What
    changes is the task.

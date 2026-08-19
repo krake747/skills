@@ -6,8 +6,9 @@ disable-model-invocation: true
 
 # Debrief
 
-After a long session, list every decision made on your own judgment. Grouped and short. The user
-reads the calls before touching the code.
+After a long session, list every decision made on your own judgment. The diff shows what changed,
+not why; the calls are invisible in it. Grouped and short, so the user reads them before touching
+the code.
 
 ## What counts
 
