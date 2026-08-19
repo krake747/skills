@@ -1,0 +1,5 @@
+interface:
+  display_name: "Debrief"
+  short_description: "List the decisions the agent made in this session"
+policy:
+  allow_implicit_invocation: false

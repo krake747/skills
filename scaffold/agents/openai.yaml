@@ -1,0 +1,3 @@
+interface:
+  display_name: "Scaffold"
+  short_description: "Match the codebase's patterns when scaffolding new code"
