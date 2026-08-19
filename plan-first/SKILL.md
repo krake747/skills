@@ -1,6 +1,6 @@
 ---
 name: plan-first
-description:
+description: >-
   Plan before code for small to medium tasks. Use when the user wants a quick plan before building:
   "how to", "approach", "strategy", "let's plan", "planning". For deep design work, run the
   interview skill instead.
@@ -10,7 +10,10 @@ description:
 
 Plan first. Code second. Every significant piece of work runs one loop:
 
-Small tasks get a quick plan, under 20 lines. Deep design work belongs in the interview skill.
+A plan takes seconds to change, code takes minutes. Agree the approach while it is cheap.
+
+Small tasks get a quick plan, under 20 lines, so the user will actually read it. Deep design work
+belongs in the interview skill.
 
 1. **Plan.** Align on approach before writing anything.
 2. **Execute.** Write code matching the agreed plan.
@@ -19,7 +22,7 @@ Small tasks get a quick plan, under 20 lines. Deep design work belongs in the in
 
 ## Rules
 
-- Keep plans extremely concise. Use short sentences and bullets, with clear structure.
+- Use short sentences and bullets, with clear structure.
 - End each plan with unresolved questions. Don't guess; ask.
 - Never skip to Execute without a plan. If the user asks for code without one, say "Let's plan
   first."
@@ -39,4 +42,4 @@ Small tasks get a quick plan, under 20 lines. Deep design work belongs in the in
 - [question 1]
 - [question 2]
 
-Keep under 20 lines. User scans, approves/adjusts, then you execute.
+User scans, approves or adjusts, then you execute.

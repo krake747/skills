@@ -11,12 +11,7 @@ npx skills add krake747/skills
 
 Matt's loop covers the whole lifecycle: grill-me or grill-with-docs to align, to-spec to write the
 spec, to-tickets to break it up, implement to build, code-review to check the diff. These skills
-plug into that loop where it has gaps.
-
-- **plan-first.** A lightweight plan for small tasks, instead of a full grilling interview.
-- **scaffold.** Match the codebase's patterns while implement is building new code.
-- **debrief.** Before code-review, list the judgment calls the agent made during the session.
-- **humanize.** Any prose the agent produces, rewritten to read like a person wrote it.
+plug into that loop where it has gaps, detailed below.
 
 ## Skills
 

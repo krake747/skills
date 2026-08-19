@@ -9,6 +9,9 @@ description:
 
 Make new code fit the codebase it lands in. Copy the patterns, never the implementation.
 
+New code is judged against the code it sits next to. Matching the existing conventions keeps the
+diff reviewable. Divergence is a statement: say it out loud and justify it.
+
 ## Process
 
 1. Find the reference. The closest existing code doing something like the new task. No sibling? Use
@@ -17,17 +20,10 @@ Make new code fit the codebase it lands in. Copy the patterns, never the impleme
 2. Read how it is put together. Where the file lives, how it is named, how it opens and closes,
    imports, exports, types, error handling, tests. What repeats across siblings is convention. What
    changes is the task.
-3. Write the new code on the same skeleton. Swap in the new subject, keep the moves.
+3. Write the new code on the same skeleton. Swap in the new subject, keep the moves. The reference
+   is a template, not a source to paste.
 4. Fill the gaps. Where no existing code covers a choice, take the closest consistent option.
 5. Report divergence in one line. If you broke convention on purpose, say which and why.
-
-## What to copy, what to leave
-
-Copy the skeleton: where the file lives, how it is named, how it opens and closes, how it imports
-and exports, how it handles errors.
-
-Leave the implementation: the specific logic, data, and handlers. The reference is a template, not a
-source to paste.
 
 ## Completion
 

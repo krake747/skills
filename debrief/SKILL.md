@@ -6,8 +6,8 @@ disable-model-invocation: true
 
 # Debrief
 
-After a long session, list every decision made on your own judgment. Grouped and short. Easy to
-read. The user reads the calls before touching the code.
+After a long session, list every decision made on your own judgment. Grouped and short. The user
+reads the calls before touching the code.
 
 ## What counts
 
@@ -16,5 +16,5 @@ where things went, what you left out on purpose. Skip anything the user spelled 
 
 ## Format
 
-Grouped by area, one bullet per call. Short enough to scan. Judgment calls first, facts after. End
-with a one-line summary: biggest call, riskiest one.
+Grouped by area, one bullet per call. Judgment calls first, facts after. End with a one-line
+summary: biggest call, riskiest one.
