@@ -4,8 +4,8 @@ description: >-
   Write code type-first and happy-path-first: model the domain in types, orchestrators read like
   English, workflows are named pipelines, data stays immutable, guard clauses leave before the valid
   flow, patterns must pay rent. Use when implementing any change, before choosing abstractions or
-  adding layers. Triggers on: "implement", "refactor", "add", "build", "fix", "change". Complements
-  implement and scaffold.
+  adding layers. Triggers on: implement, refactor, add, build, fix, change. Complements implement
+  and scaffold.
 ---
 
 # Happy Path First

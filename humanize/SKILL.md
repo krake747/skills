@@ -1,7 +1,10 @@
 ---
 name: humanize
-description:
-  Rewrite text so it reads like a person wrote it. Apply to any prose the agent produces or edits.
+description: >-
+  Use when writing or editing prose: replies, summaries, commit messages, PR descriptions, READMEs,
+  docs, comments, changelogs, release notes, posts, announcements. Rewrite the text so it reads like
+  a person wrote it. Triggers on: commit message, PR description, README, docs, summary, changelog,
+  release notes, comment, reply, post, prose, humanize. Complements writing-for-agents.
 ---
 
 # Humanize
