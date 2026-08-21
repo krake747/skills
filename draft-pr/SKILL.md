@@ -35,8 +35,13 @@ its place.
 - **Flag judgment calls.** List every decision you made on your own: naming, scope cuts, invented
   details, where things went, what you left out on purpose. These feed Key decisions and Risks, or
   get flagged for the user to veto before merge.
-- **Never use the question tool.** The user responds in their own words; options would bias the
-  approval.
+- **Approve conversationally with the question tool.** After each chunk, ask one open question:
+  approve as-is or revise. Offer approve/revise choices but always leave room for the user's own
+  words; never let fixed options narrow what they can say.
+- **Reconcile at the end.** Before handing over the draft, re-read the final diff and check every
+  line of the description against it. The reviewed code is the source of truth: drop anything the
+  walkthrough approved that the final change no longer contains, and add anything the change does
+  that no chunk covered.
 
 ## PR description shape
 
@@ -45,13 +50,15 @@ walkthrough's detail in the chat, not in the draft.
 
 Each approved chunk fills one or more sections:
 
-- **Title.** One line naming the change, in conventional commits format (`feat:`, `fix:`,
-  `refactor:`, ...).
+- **Title.** One line naming the change. Use the repo's title convention (conventional commits
+  `feat:`, `fix:`, ... when that is what it uses).
 - **Why.** The user-facing problem the change solves.
 - **What changed.** One bullet per approved chunk, in the user's words.
 - **Key decisions.** Options considered, the chosen one, and why.
-- **Verification.** Tests run and evidence gathered during the review.
-- **Risks and follow-ups.** Load-bearing lines and tradeoffs a reviewer should watch.
+- **Verification.** Only checks actually run and observed during the review (see Verified vs
+  follow-ups).
+- **Risks and follow-ups.** Load-bearing lines, tradeoffs a reviewer should watch, and anything not
+  verified.
 
 Worked example:
 
@@ -81,9 +88,22 @@ order.
 
 ## Conventions
 
+- **Read the repo's PR conventions first.** Before drafting, look for a PR template, a CONTRIBUTING
+  file, docs on commit or PR style, and recent titles in `git log`. Adopt whatever shape, title
+  format, and section names the repo already uses; fall back to the default shape here only when the
+  repo has none.
+- **Stay platform-agnostic.** Do not assume GitHub, Azure DevOps, GitLab, Jira, or any tracker.
+  Never invent issue numbers, work item IDs, or links. If the user gives one, include it verbatim;
+  otherwise describe the problem in words.
 - The description must read so a stranger with a PR link understands the end, the approach, and the
   risk. Code is a means to an end; the description names the end.
 - Correctness and readability beat speed. Flag a simpler change when the code allows one.
 - Skip anything the user spelled out.
+- Include any extra context the user gave in the request.
 
-Include any extra context the user gave in the request.
+## Verified vs follow-ups
+
+Keep these two apart. Verification lists only what was actually run or observed during the
+walkthrough: commands executed, tests that passed, output seen. Follow-ups list what was _not_ done:
+untested paths, known gaps, ideas deferred. Never promote an unverified claim into Verification to
+make the PR look stronger; if it was not run, it is a follow-up.
