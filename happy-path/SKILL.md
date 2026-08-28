@@ -6,6 +6,8 @@ description: >-
   flow, patterns must pay rent. Use when implementing any change, before choosing abstractions or
   adding layers. Triggers on: implement, refactor, add, build, fix, change. Complements implement
   and scaffold.
+metadata:
+  author: "Kevin Kraemer <kraemer.kevin747@gmail.com>"
 ---
 
 # Happy Path First

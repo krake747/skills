@@ -4,6 +4,8 @@ description: >-
   Plan before code for small to medium tasks. Use when the user wants a quick plan before building:
   let's plan, planning, make a plan, give me a plan. For deep design work, run `/grill-me` or
   `/grill-with-docs` instead.
+metadata:
+  author: "Kevin Kraemer <kraemer.kevin747@gmail.com>"
 ---
 
 # Plan First

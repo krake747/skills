@@ -8,6 +8,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "eval:skills": "./scripts/evaluate-skills.sh",
     "fmt": "oxfmt --no-error-on-unmatched-pattern",
     "fmt:check": "oxfmt --check"
   },

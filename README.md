@@ -36,6 +36,12 @@ Some skills fire on their own, some you must trigger.
 | happy-path | agent      | Starting an implementation, to keep the valid flow dominant |
 | draft-pr   | you        | After code-review, to write the PR description              |
 
+## Evaluation
+
+Run the keyless Tier 1 quality checks for all skills with
+[`scripts/evaluate-skills.sh`](scripts/evaluate-skills.sh). See [`evals/README.md`](evals/README.md)
+for setup and scope.
+
 ## Skills
 
 - **[plan-first](plan-first/SKILL.md).** Plan before code. A lightweight 20-line plan for small
