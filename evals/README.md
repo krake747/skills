@@ -51,7 +51,7 @@ The command compares all skills with `similarity-check`, then checks each skill 
 
 ## Live Model Evals
 
-The skill-specific eval cases under each `evals/evals.json` follow the workflow described by
+The skill-specific eval cases under `evals/<skill>/evals.json` follow the workflow described by
 [agentskills.io](https://agentskills.io/skill-creation/evaluating-skills). Run one skill or one case
 with OpenCode:
 
@@ -67,9 +67,24 @@ skill, and writes responses and timing data under `/tmp/skills-live-evals` by de
 Grade saved live results without another model call:
 
 ```bash
-pnpm eval:skills:grade humanize /tmp/skills-live-evals
+pnpm eval:skills:grade humanize 1 /tmp/skills-live-evals
+```
+
+Append a case ID to grade a partial iteration:
+
+```bash
+pnpm eval:skills:grade humanize 1 /tmp/skills-live-evals humanize-commit
 ```
 
 The grader writes one `grading.json` per configuration and a `benchmark.json` summary. Objective
 assertions are checked automatically; prose quality and other contextual assertions are marked for
 human review.
+
+Generate a standalone review page without another model call:
+
+```bash
+pnpm eval:skills:review humanize 1 /tmp/skills-live-evals
+```
+
+The page is written beside the iteration benchmark. Review each paired output and download the
+resulting `feedback.json` for the next iteration.

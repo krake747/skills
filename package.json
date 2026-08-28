@@ -10,8 +10,9 @@
   "scripts": {
     "eval:skills": "./scripts/evaluate-skills.sh",
     "eval:skills:tier2": "./scripts/evaluate-skills-tier2.sh",
-    "eval:skills:live": "./scripts/evaluate-skills-live.sh",
-    "eval:skills:grade": "./scripts/evaluate-skills-grade.sh",
+    "eval:skills:live": "uv run ./scripts/evaluate-skills-live.py",
+    "eval:skills:grade": "uv run ./scripts/evaluate-skills-grade.py",
+    "eval:skills:review": "uv run ./scripts/evaluate-skills-review.py",
     "fmt": "oxfmt --no-error-on-unmatched-pattern",
     "fmt:check": "oxfmt --check"
   },
