@@ -10,7 +10,8 @@ metadata:
 
 # Plan First
 
-Plan first. Code second. Anything bigger than a one-line fix runs one loop:
+Anything bigger than a one-line fix runs the loop below. Aligning while changes are cheap keeps
+implementation focused.
 
 A plan takes seconds to change, code takes minutes. Agree the approach while it is cheap.
 

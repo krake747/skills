@@ -40,7 +40,7 @@ Some skills fire on their own, some you must trigger.
 
 Run the keyless Tier 1 quality checks for all skills with
 [`scripts/evaluate-skills.sh`](scripts/evaluate-skills.sh). See [`evals/README.md`](evals/README.md)
-for setup and scope.
+for setup, scope, and the local Tier 2 command.
 
 ## Skills
 

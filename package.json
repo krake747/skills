@@ -9,6 +9,7 @@
   "main": "index.js",
   "scripts": {
     "eval:skills": "./scripts/evaluate-skills.sh",
+    "eval:skills:tier2": "./scripts/evaluate-skills-tier2.sh",
     "fmt": "oxfmt --no-error-on-unmatched-pattern",
     "fmt:check": "oxfmt --check"
   },
