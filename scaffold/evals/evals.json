@@ -1,0 +1,53 @@
+{
+  "skill_name": "scaffold",
+  "evals": [
+    {
+      "id": "scaffold-reference",
+      "prompt": "Add a new password reset endpoint to the fixture project. Follow the closest existing endpoint exactly where the conventions match, and explain any deliberate divergence.",
+      "expected_output": "A password reset endpoint that mirrors the existing endpoint's location, naming, imports, response shape, and test style, with divergences called out.",
+      "files": [
+        "evals/files/project/src/users/getUser.ts",
+        "evals/files/project/src/users/getUser.test.ts",
+        "evals/files/project/src/users/routes.ts"
+      ],
+      "assertions": [
+        "The response identifies getUser.ts as the reference",
+        "The proposed file stays under src/users",
+        "The endpoint uses the existing async handler and response conventions",
+        "The response includes a matching test or explains why one is not added",
+        "Any difference from the reference is explicitly labeled as a divergence"
+      ]
+    },
+    {
+      "id": "scaffold-test",
+      "prompt": "Add a listUsers function to the fixture project. Match the neighboring getUser function and its test conventions rather than introducing a new abstraction.",
+      "expected_output": "A listUsers implementation and test that reuse the neighboring module's structure without adding unnecessary layers.",
+      "files": [
+        "evals/files/project/src/users/getUser.ts",
+        "evals/files/project/src/users/getUser.test.ts"
+      ],
+      "assertions": [
+        "The response names the neighboring getUser function as the reference",
+        "The new function follows the same import and export style",
+        "The response proposes a test in the same test location and style",
+        "The response does not introduce a service, class, or dispatcher without evidence",
+        "The response distinguishes copied conventions from task-specific changes"
+      ]
+    },
+    {
+      "id": "scaffold-no-analog",
+      "prompt": "Add an audit export module to the fixture project. There is no existing export module, so inspect the available conventions and state where you must choose a new one.",
+      "expected_output": "A proposed module grounded in nearby project conventions that clearly identifies decisions with no existing analog.",
+      "files": [
+        "evals/files/project/src/users/getUser.ts",
+        "evals/files/project/src/users/routes.ts"
+      ],
+      "assertions": [
+        "The response inspects or cites the available neighboring conventions",
+        "The response proposes a concrete location and naming convention",
+        "The response explicitly flags the missing export analog as a divergence or new convention",
+        "The response avoids claiming that an export pattern exists when it does not"
+      ]
+    }
+  ]
+}

@@ -10,16 +10,18 @@
   "scripts": {
     "eval:skills": "./scripts/evaluate-skills.sh",
     "eval:skills:tier2": "./scripts/evaluate-skills-tier2.sh",
+    "eval:skills:live": "./scripts/evaluate-skills-live.sh",
+    "eval:skills:grade": "./scripts/evaluate-skills-grade.sh",
     "fmt": "oxfmt --no-error-on-unmatched-pattern",
     "fmt:check": "oxfmt --check"
   },
   "devDependencies": {
-    "oxfmt": "^0.64.0"
+    "oxfmt": "^0.65.0"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "^11.21.0",
+      "version": "^12.0.0",
       "onFail": "download"
     }
   }

@@ -1,0 +1,40 @@
+{
+  "skill_name": "plan-first",
+  "evals": [
+    {
+      "id": "plan-first-search",
+      "prompt": "Let's plan first for adding a search bar to an existing website. I need a plan short enough to review before implementation.",
+      "expected_output": "A short implementation plan that compares reasonable approaches, recommends one, and ends with unresolved questions.",
+      "assertions": [
+        "The response is a plan and does not start implementing the feature",
+        "The plan compares at least two approaches with tradeoffs",
+        "The plan makes one explicit recommendation and gives a reason",
+        "The plan ends with unresolved questions",
+        "The plan is under 20 lines or clearly remains brief"
+      ]
+    },
+    {
+      "id": "plan-first-upload",
+      "prompt": "Before writing code, make a plan for adding file uploads to a web app. Cover validation, storage, and tests, but keep the plan brief.",
+      "expected_output": "A brief plan that aligns on the upload approach, names validation and testing work, and asks unresolved questions instead of guessing.",
+      "assertions": [
+        "The response stays at the planning stage",
+        "The plan addresses file validation, storage, and tests",
+        "The plan names at least one meaningful alternative or tradeoff",
+        "The plan includes an explicit recommendation",
+        "The final section contains unresolved questions"
+      ]
+    },
+    {
+      "id": "plan-first-no-skip",
+      "prompt": "Implement a filter that lets users combine status, owner, and date criteria. Start with a plan and wait for my approval before writing code.",
+      "expected_output": "A plan only, with no code changes, followed by a request for approval or answers to unresolved questions.",
+      "assertions": [
+        "The response does not provide implementation code",
+        "The response explicitly says planning comes before execution",
+        "The plan covers the three requested filter criteria",
+        "The response asks for approval or unresolved decisions before execution"
+      ]
+    }
+  ]
+}

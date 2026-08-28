@@ -1,0 +1,44 @@
+{
+  "skill_name": "happy-path",
+  "evals": [
+    {
+      "id": "happy-path-pipeline",
+      "prompt": "Implement the order execution workflow described in evals/files/order-workflow.md. Keep the normal flow flat and make the domain states explicit.",
+      "expected_output": "A typed order execution pipeline whose orchestrator reads as the use case, with invalid conditions leaving before the valid flow.",
+      "files": ["evals/files/order-workflow.md"],
+      "assertions": [
+        "The response defines a named input and output for the workflow",
+        "The normal flow is presented as a linear pipeline",
+        "Invalid account, ticker, and buying-power conditions leave before routing",
+        "Order states are modeled without a bag of nullable flags",
+        "The response does not add abstractions without a concrete invariant"
+      ]
+    },
+    {
+      "id": "happy-path-immutable",
+      "prompt": "Refactor the position update in evals/files/position-update.ts using happy-path principles. Preserve the observable behavior and keep the original position unchanged.",
+      "expected_output": "A focused refactor that derives a new position value, keeps the valid path obvious, and preserves observable behavior.",
+      "files": ["evals/files/position-update.ts"],
+      "assertions": [
+        "The refactor returns a new position instead of mutating the original",
+        "The original position remains unchanged after a fill",
+        "The valid update path stays shallow and readable",
+        "The response preserves shares and cost basis behavior",
+        "The response does not split one simple operation into helper shrapnel"
+      ]
+    },
+    {
+      "id": "happy-path-boundary",
+      "prompt": "Design the smallest implementation for the external order payload in evals/files/order-payload.json. Parse it once at the boundary, then expose a trusted domain value to the workflow.",
+      "expected_output": "A boundary parser and trusted order type that prevent raw external data from flowing through the workflow.",
+      "files": ["evals/files/order-payload.json"],
+      "assertions": [
+        "The response identifies the external payload boundary",
+        "The payload is parsed once into a trusted domain value",
+        "The domain value has precise fields for ticker, side, quantity, and price",
+        "The workflow does not continue using an untyped raw payload",
+        "The proposed design is smaller than an unnecessary abstraction layer"
+      ]
+    }
+  ]
+}

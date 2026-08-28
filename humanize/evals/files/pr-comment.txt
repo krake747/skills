@@ -1,0 +1,1 @@
+This implementation is wrong because the response body is nil on a 404. Please fix it and add a regression test for the 404 case before merging.

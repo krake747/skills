@@ -1,0 +1,69 @@
+{
+  "skill_name": "humanize",
+  "evals": [
+    {
+      "id": "humanize-commit",
+      "prompt": "Rewrite the commit message in evals/files/commit-message.txt so it is concise and readable. Preserve the implementation details and the conventional commit scope.",
+      "expected_output": "A concise commit message that keeps the original scope and implementation details while removing filler and inflated wording.",
+      "files": ["evals/files/commit-message.txt"],
+      "assertions": [
+        "The output is a rewritten commit message, not a discussion of how to rewrite one",
+        "The feat scope remains parser",
+        "The output preserves CSV imports, quoted fields, and malformed-row warnings",
+        "The output removes the phrases 'seamlessly' and 'going forward'",
+        "The output contains no em dash or en dash"
+      ]
+    },
+    {
+      "id": "humanize-pr-comment",
+      "prompt": "Rewrite the pull request comment in evals/files/pr-comment.txt to sound polite and professional. Keep the technical feedback and requested change intact.",
+      "expected_output": "A polite PR comment that states the concrete issue and requested test without softening or losing the technical feedback.",
+      "files": ["evals/files/pr-comment.txt"],
+      "assertions": [
+        "The output is a rewritten PR comment",
+        "The output still identifies the nil response body as the issue",
+        "The output still requests a regression test for the 404 case",
+        "The output does not add claims about code or tests not present in the source",
+        "The output contains no em dash or en dash"
+      ]
+    },
+    {
+      "id": "humanize-readme",
+      "prompt": "Rewrite the README in evals/files/README.md to make it clearer and more engaging for a developer evaluating the project. Preserve all commands, paths, versions, and code blocks exactly.",
+      "expected_output": "A clearer README with a direct introduction and practical structure, while all technical instructions and code remain unchanged.",
+      "files": ["evals/files/README.md"],
+      "assertions": [
+        "The output includes a rewritten README rather than general advice",
+        "The command 'pnpm install' is unchanged",
+        "The command 'pnpm dev' is unchanged",
+        "The path 'http://localhost:4173' is unchanged",
+        "The code block remains present and unchanged",
+        "The output does not invent features or prerequisites"
+      ]
+    },
+    {
+      "id": "humanize-summary",
+      "prompt": "Write a concise project progress summary from the facts in evals/files/project-progress.md. Keep the dates, version number, completed work, blocker, and next step accurate. Do not claim work that is not listed.",
+      "expected_output": "A concise factual progress summary covering the completed work, current blocker, and next step without inventing details.",
+      "files": ["evals/files/project-progress.md"],
+      "assertions": [
+        "The output is a progress summary based on the supplied facts",
+        "The output preserves the date 2026-08-26",
+        "The output preserves version 2.4.0",
+        "The output mentions the completed CSV export and the blocked S3 upload",
+        "The output identifies security review as the next step",
+        "The output does not invent a release date"
+      ]
+    },
+    {
+      "id": "humanize-missing-input",
+      "prompt": "Can you rewrite this comment to sound more professional?",
+      "expected_output": "A brief request for the missing comment text, without pretending to rewrite content that was not supplied.",
+      "assertions": [
+        "The agent asks the user to provide the comment text",
+        "The agent does not invent a comment or claim that it rewrote one",
+        "The response is concise and professional"
+      ]
+    }
+  ]
+}

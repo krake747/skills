@@ -1,0 +1,21 @@
+diff --git a/src/reports/filterStore.ts b/src/reports/filterStore.ts
+index 1111111..2222222 100644
+--- a/src/reports/filterStore.ts
++++ b/src/reports/filterStore.ts
+@@ -1,4 +1,12 @@
++export function saveFilters(filters) {
++  localStorage.setItem("report-filters", JSON.stringify(filters));
++}
++
++export function loadFilters() {
++  return JSON.parse(localStorage.getItem("report-filters") ?? "null");
++}
+diff --git a/src/reports/filterStore.test.ts b/src/reports/filterStore.test.ts
+index 3333333..4444444 100644
+--- a/src/reports/filterStore.test.ts
++++ b/src/reports/filterStore.test.ts
+@@ -1,2 +1,8 @@
++test("restores saved filters", () => {
++  saveFilters({ status: "open" });
++  expect(loadFilters()).toEqual({ status: "open" });
++});

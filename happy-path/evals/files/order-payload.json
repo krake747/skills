@@ -1,0 +1,6 @@
+{
+  "ticker": "ACME",
+  "side": "buy",
+  "quantity": 100,
+  "price": 42.5
+}
