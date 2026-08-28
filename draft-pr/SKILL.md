@@ -5,8 +5,6 @@ description: >-
   chunks, approved one at a time. Each approved chunk feeds the draft, so the user writes the
   description by approving the review. Use after a big change, when a PR needs a description that
   names the problem, the approach, and the risk. Complements code-review.
-metadata:
-  author: "Kevin Kraemer <kraemer.kevin747@gmail.com>"
 disable-model-invocation: true
 ---
 
