@@ -9,20 +9,22 @@
   "main": "index.js",
   "scripts": {
     "eval:skills": "./scripts/evaluate-skills.sh",
+    "eval:skills:all": "./scripts/evaluate-skills.sh && pnpm eval:skills:tier2",
     "eval:skills:tier2": "./scripts/evaluate-skills-tier2.sh",
     "eval:skills:live": "uv run ./scripts/evaluate-skills-live.py",
     "eval:skills:grade": "uv run ./scripts/evaluate-skills-grade.py",
     "eval:skills:review": "uv run ./scripts/evaluate-skills-review.py",
+    "eval:skills:live:grade:review": "uv run ./scripts/evaluate-skills-live.py && uv run ./scripts/evaluate-skills-grade.py && uv run ./scripts/evaluate-skills-review.py",
     "fmt": "oxfmt --no-error-on-unmatched-pattern",
     "fmt:check": "oxfmt --check"
   },
   "devDependencies": {
-    "oxfmt": "^0.65.0"
+    "oxfmt": "^0.66.0"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "^12.0.0",
+      "version": "^12.2.1",
       "onFail": "download"
     }
   }

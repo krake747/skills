@@ -1,0 +1,53 @@
+diff --git a/src/reports/filterStore.ts b/src/reports/filterStore.ts
+index 1111111..2222222 100644
+--- a/src/reports/filterStore.ts
++++ b/src/reports/filterStore.ts
+@@ -1,4 +1,12 @@
++export function saveFilters(filters) {
++  localStorage.setItem("report-filters", JSON.stringify(filters));
++}
++
++export function loadFilters() {
++  return JSON.parse(localStorage.getItem("report-filters") ?? "null");
++}
+diff --git a/src/reports/filterStore.test.ts b/src/reports/filterStore.test.ts
+index 3333333..4444444 100644
+--- a/src/reports/filterStore.test.ts
++++ b/src/reports/filterStore.test.ts
+@@ -1,2 +1,8 @@
++test("restores saved filters", () => {
++  saveFilters({ status: "open" });
++  expect(loadFilters()).toEqual({ status: "open" });
++});
+diff --git a/src/api/routes.ts b/src/api/routes.ts
+index 5555555..6666666 100644
+--- a/src/api/routes.ts
++++ b/src/api/routes.ts
+@@ -10,3 +10,18 @@
++export const REPORT_ROUTES = ["/reports", "/reports/:id"];
++export function registerReportRoutes(app) {
++  app.get(REPORT_ROUTES[0], requireAuth, listReports);
++  app.get(REPORT_ROUTES[1], requireAuth, getReport);
++}
+diff --git a/src/db/migrations/20260201_add_report_filters.ts b/src/db/migrations/20260201_add_report_filters.ts
+index 7777777..8888888 100644
+--- a/src/db/migrations/20260201_add_report_filters.ts
++++ b/src/db/migrations/20260201_add_report_filters.ts
+@@ -0,0 +1,15 @@
++export function up(knex) {
++  return knex.schema.table("report_views", (t) => {
++    t.jsonb("filter_snapshot");
++  });
++}
++export function down(knex) {
++  return knex.schema.dropColumn("filter_snapshot");
++}
+diff --git a/src/workers/reportExport.ts b/src/workers/reportExport.ts
+index 9999999..aaaaaaa 100644
+--- a/src/workers/reportExport.ts
++++ b/src/workers/reportExport.ts
+@@ -5,7 +5,12 @@
++export function exportWithFilters(reportId, filters) {
++  const snapshot = loadFilters();
++  return queue.add("export", { reportId, filters: snapshot || filters });
++}

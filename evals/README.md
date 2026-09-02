@@ -6,6 +6,13 @@ Run the keyless Tier 1 checks for every skill in this repository:
 ./scripts/evaluate-skills.sh
 ```
 
+Filter to a single skill:
+
+```bash
+./scripts/evaluate-skills.sh --skill draft-pr
+SKILL_EVAL_STRICT_AUTHOR=0 ./scripts/evaluate-skills.sh --skill draft-pr
+```
+
 The command uses [NVIDIA SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator) through `uvx`. It
 checks schema, PII, licensing, quality, Unicode safety, and scripts without making model calls. No
 API key, Docker daemon, or paid evaluation service is required.
@@ -34,6 +41,12 @@ Tier 2 checks semantic overlap locally using Ollama:
 pnpm eval:skills:tier2
 ```
 
+Filter to one skill:
+
+```bash
+pnpm eval:skills:tier2 --skill draft-pr
+```
+
 The default models are `nomic-embed-text` for embeddings and `qwen2.5-coder:3b` for within-skill
 duplicate verification. The verifier uses a non-reasoning model because SkillEvaluator requires
 structured JSON verdicts. Override it with `SKILL_EVAL_LLM_MODEL`, or override the embedding model
@@ -59,10 +72,18 @@ with OpenCode:
 pnpm eval:skills:live humanize humanize-commit
 ```
 
-The runner loads `.env`, stages fixtures in a temporary workspace, runs both with and without the
-skill, and writes responses and timing data under `/tmp/skills-live-evals` by default. Use
-`SKILL_EVAL_DRY_RUN=1` to verify staging without making model calls. Automated runs require
-`OPENAI_API_KEY`; manual assertion grading does not.
+Verify staging without a model call:
+
+```bash
+SKILL_EVAL_DRY_RUN=1 pnpm eval:skills:live draft-pr
+```
+
+The runner copies the full skill directory including `agents/` into
+`workspace/.agents/skills/<skill>`, stages fixtures in a temporary workspace, runs both with and
+without the skill, and writes responses and timing data under `/tmp/skills-live-evals` by default.
+It retries once on 429 and 5xx. Use `SKILL_EVAL_ITERATION=2` to keep prior iterations. Automated
+runs require `OPENAI_API_KEY`; manual assertion grading does not. The runner writes `prompt.txt`,
+`fixtures.json`, `trajectory.jsonl`, `raw_stdout.log`, and `stderr.log` beside each `response.txt`.
 
 Grade saved live results without another model call:
 
@@ -76,15 +97,25 @@ Append a case ID to grade a partial iteration:
 pnpm eval:skills:grade humanize 1 /tmp/skills-live-evals humanize-commit
 ```
 
-The grader writes one `grading.json` per configuration and a `benchmark.json` summary. Objective
-assertions are checked automatically; prose quality and other contextual assertions are marked for
-human review.
+The grader checks many assertions automatically: no em dash, line limits including under 50,
+verbatim ticket link, churn `+N -M`, conventional `feat:` title, file references, risk and deferred
+phrases, semantic chunks, and approve or revise. Remaining contextual assertions are marked for
+human review. It writes one `grading.json` per configuration and a `benchmark.json` summary with
+auto pass rate and manual ratio.
 
 Generate a standalone review page without another model call:
 
 ```bash
 pnpm eval:skills:review humanize 1 /tmp/skills-live-evals
+pnpm eval:skills:review humanize 1 --open
 ```
 
-The page is written beside the iteration benchmark. Review each paired output and download the
-resulting `feedback.json` for the next iteration.
+The page is written beside the iteration benchmark and shows token and time deltas. Review each
+paired output and download the resulting `feedback.json` for the next iteration. Pass `--open` to
+launch the browser via `xdg-open`.
+
+## All Checks
+
+```bash
+pnpm eval:skills:all
+```

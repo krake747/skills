@@ -2,31 +2,29 @@
   "skill_name": "draft-pr",
   "evals": [
     {
-      "id": "draft-pr-walkthrough",
-      "prompt": "Prepare a PR description from the supplied review packet. Start the bounded walkthrough, show the total diff first, explain the why, and ask me to approve the first semantic chunk before continuing. Do not invent a platform or issue number.",
-      "expected_output": "The first step of an evidence-based PR walkthrough, including total churn, the user-facing why, the first semantic chunk, and an approval question.",
+      "id": "draft-pr-report",
+      "prompt": "Analyze the supplied review packet, produce a single report then propose a squash-ready PR title and body, and ask once to refine. Use the ticket link and diff as given. Do not invent a platform or extra issue number.",
+      "expected_output": "A single analysis report with total churn, user-facing why, semantic chunks with files, plus a proposed conventional title and squash body with Related ticket, and one refine question.",
       "files": [
-        "files/review-packet/PR_TEMPLATE.md",
-        "files/review-packet/CONTRIBUTING.md",
         "files/review-packet/commits.txt",
         "files/review-packet/user-context.md",
         "files/review-packet/change.diff"
       ],
       "assertions": [
-        "The response reads or cites the supplied PR guidance and diff",
         "The response reports the total added and deleted lines from the packet",
         "The response explains the user-facing problem before discussing mechanics",
-        "The first chunk is semantically ordered and names the files it covers",
-        "The response asks for approval or revision before continuing",
-        "The response does not invent a platform, issue number, or link"
+        "The response names the files covered by each semantic chunk",
+        "The response includes the verbatim ticket link under Related when provided",
+        "The response asks once to approve or revise before finishing",
+        "The response does not invent a platform, issue number, or extra link"
       ]
     },
     {
       "id": "draft-pr-risk",
-      "prompt": "Use the supplied review packet to begin drafting a PR description. Surface the known risk and the deliberate omission, but pause after one chunk for approval.",
-      "expected_output": "A grounded first walkthrough chunk that identifies the known risk and deferred work, then waits for approval.",
+      "prompt": "Use the supplied review packet to produce your report and proposed description. Surface the known risk and the deliberate omission as risks and follow-ups, then pause once for refinement.",
+      "expected_output": "A report and proposed description that identifies the known risk and deferred work, then waits once for refinement.",
       "files": [
-        "files/review-packet/PR_TEMPLATE.md",
+        "files/review-packet/commits.txt",
         "files/review-packet/user-context.md",
         "files/review-packet/change.diff"
       ],
@@ -35,24 +33,43 @@
         "The response identifies the deliberately deferred work stated in the packet",
         "The response distinguishes user-provided facts from inferred decisions",
         "The response covers a bounded semantic chunk rather than listing files alphabetically",
-        "The response pauses for conversational approval"
+        "The response pauses once for conversational refinement"
       ]
     },
     {
       "id": "draft-pr-reconcile",
-      "prompt": "Review the supplied final diff and PR context, then show a proposed title and compact description only after checking that each claim is grounded. If anything is missing, identify it instead of guessing.",
-      "expected_output": "A compact, traceable PR title and description, with unsupported claims called out rather than invented.",
+      "prompt": "Review the supplied final diff and packet, then show a proposed conventional title and compact squash-ready description only after checking that each claim is grounded. Include the Related ticket verbatim when given. If anything is missing, identify it instead of guessing.",
+      "expected_output": "A compact traceable conventional PR title and squash body with Related ticket, with unsupported claims called out rather than invented.",
       "files": [
-        "files/review-packet/PR_TEMPLATE.md",
+        "files/review-packet/commits.txt",
         "files/review-packet/user-context.md",
         "files/review-packet/change.diff"
       ],
       "assertions": [
-        "The proposed title follows the supplied repository convention",
+        "The proposed title follows conventional commits",
         "The description covers why, what changed, and risks or follow-ups",
+        "The description includes the verbatim ticket link when provided",
         "Every material claim is traceable to the supplied context or diff",
         "The description remains under 15 lines",
         "Unsupported platform details and issue identifiers are not invented"
+      ]
+    },
+    {
+      "id": "draft-pr-large",
+      "prompt": "Analyze the larger packet with multiple files and a migration, produce a single report then propose a squash-ready PR body that scales beyond 15 lines. Include the ticket verbatim and surface rollout and migration risk, then ask once to refine.",
+      "expected_output": "A scaled squash body that still covers why, what changed, decisions, and risks, with total churn and semantic chunks with files, and one refine question.",
+      "files": [
+        "files/large-pack/commits.txt",
+        "files/large-pack/user-context.md",
+        "files/large-pack/change-large.diff"
+      ],
+      "assertions": [
+        "The response reports the total added and deleted lines from the packet",
+        "The response names the files covered by each semantic chunk",
+        "The response includes the verbatim ticket link under Related when provided",
+        "The proposed title follows conventional commits",
+        "The description remains under 50 lines",
+        "The response does not invent a platform, issue number, or extra link"
       ]
     }
   ]

@@ -1,5 +1,5 @@
 interface:
   display_name: "Draft PR"
-  short_description: "Draft a PR description from an approved chunk-by-chunk review"
+  short_description: "Ticket-linked conventional PR body for squash merges from a single analysis report"
 policy:
   allow_implicit_invocation: false

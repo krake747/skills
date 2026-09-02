@@ -22,7 +22,8 @@ the big ones and let [plan-first](plan-first/SKILL.md) handle the small.
    to the codebase's patterns; [happy-path](happy-path/SKILL.md) keeps the valid flow dominant as
    you go.
 4. **Review.** `/code-review` checks the diff against the spec. Then [draft-pr](draft-pr/SKILL.md)
-   writes the PR description the review fed on and flags the judgment calls the diff hides.
+   analyzes the diff and ticket, reports context, decisions and risks, and proposes a squash-ready
+   PR body to refine in one loop.
 5. **Prose, anywhere.** [humanize](humanize/SKILL.md) makes text the agent writes read like a person
    wrote it.
 
@@ -53,6 +54,6 @@ for setup, scope, and the local Tier 2 command.
   and scaffold.
 - **[scaffold](scaffold/SKILL.md).** Match the codebase's existing patterns when writing new code.
   Complements codebase-design and implement.
-- **[draft-pr](draft-pr/SKILL.md).** Draft a PR description by walking the diff in small approved
-  chunks; each chunk feeds the draft, and judgment calls made on your own surface for a veto before
-  merge. Complements code-review, which checks the diff rather than writing the PR's story.
+- **[draft-pr](draft-pr/SKILL.md).** Analyze the diff and ticket, report context, decisions and
+  risks, and propose a ticket-linked conventional PR body that survives squash, to refine in one
+  loop. Complements code-review, which checks the diff rather than writing the PR's story.
