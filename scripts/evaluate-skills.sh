@@ -100,51 +100,90 @@ printf 'Validating: %s\n' "$skills_root" >&2
 printf 'Output dir: %s\n' "$output_dir" >&2
 if [[ -n "$skill_filter" ]]; then printf 'Skill filter: %s\n' "$skill_filter" >&2; fi
 
-set +e
-uvx --from 'skillevaluator[all] @ git+https://github.com/NVIDIA/SkillEvaluator.git' \
-  skillevaluator validate "$skills_root" \
-  --checks schema,pii,license,quality,unicode,lint \
-  --no-dedup \
-  --output-dir "$output_dir"
-status=$?
-set -e
-
-# Allow missing author when not strict. Filter the JSON report and downgrade that single high error.
-if [[ "$status" -ne 0 && "$strict_author" != "1" ]]; then
-  # Find the latest JSON report written for this run
-  latest_json=$(ls -t "$output_dir"/*.json 2>/dev/null | head -n 1)
-  if [[ -z "$latest_json" ]]; then
-    latest_json=$(find "$output_dir" -maxdepth 3 -name "*.json" -type f -printf "%T@ %p\n" 2>/dev/null | sort -nr | head -n 1 | cut -d' ' -f2-)
-  fi
-  if [[ -n "${latest_json:-}" && -f "$latest_json" ]]; then
-    only_author=$(python3 - "$latest_json" <<'PY'
-import json, sys
-path = sys.argv[1]
-try:
-    data = json.loads(open(path).read())
-except Exception:
-    print("0")
-    sys.exit(0)
-findings = []
-for r in data.get("results", []):
-    for f in r.get("findings", []):
-        findings.append(f)
-high = [f for f in findings if f.get("severity") == "high"]
-# count high findings that are not author_missing
-non_author_high = [f for f in high if f.get("check_name") != "author_missing"]
-if len(high) > 0 and len(non_author_high) == 0:
-    print("1")
+if [[ "$strict_author" != "1" ]]; then
+  # Lenient mode: capture evaluator output, downgrade author_missing to warning
+  tmp_out=$(mktemp)
+  set +e
+  uvx --from 'skillevaluator[all] @ git+https://github.com/NVIDIA/SkillEvaluator.git' \
+    skillevaluator validate "$skills_root" \
+    --checks schema,pii,license,quality,unicode,lint \
+    --no-dedup \
+    --output-dir "$output_dir" >"$tmp_out" 2>&1
+  status=$?
+  set -e
+  if [[ "$status" -ne 0 ]]; then
+    only_author=$(python3 - "$output_dir" <<'PY'
+import json, pathlib, sys
+out_dir = pathlib.Path(sys.argv[1])
+# Check all JSON reports written in this run
+json_files = list(out_dir.rglob("*.json"))
+# Filter to evaluator outputs (contain results/findings)
+author_only = True
+found_any = False
+for jf in json_files:
+    try:
+        data = json.loads(jf.read_text())
+    except Exception:
+        continue
+    if "results" not in data:
+        continue
+    found_any = True
+    for r in data.get("results", []):
+        for f in r.get("findings", []):
+            if f.get("severity") == "high" and f.get("check_name") != "author_missing":
+                author_only = False
+                break
+        # also check schema high at top level? already covered
+    high = []
+    for r in data.get("results", []):
+        high.extend([f for f in r.get("findings", []) if f.get("severity") == "high"])
+    if high:
+        non_author = [f for f in high if f.get("check_name") != "author_missing"]
+        if non_author:
+            author_only = False
+if found_any and author_only:
+    # verify at least one high was author_missing, otherwise this is a clean pass with no highs
+    has_author_high = False
+    for jf in json_files:
+        try:
+            data = json.loads(jf.read_text())
+        except Exception:
+            continue
+        for r in data.get("results", []):
+            for f in r.get("findings", []):
+                if f.get("severity") == "high" and f.get("check_name") == "author_missing":
+                    has_author_high = True
+    if has_author_high:
+        print("1")
+    else:
+        print("0")
 else:
     print("0")
 PY
 )
     if [[ "$only_author" == "1" ]]; then
-      echo "" >&2
+      echo "Result: PASS (author_missing downgraded to warning, SKILL_EVAL_STRICT_AUTHOR=0)" >&2
+      echo "All skills pass when author is optional. Rerun with SKILL_EVAL_STRICT_AUTHOR=1 to enforce." >&2
       echo "Reports: $output_dir" >&2
-      echo "Note: author_missing treated as warning SKILL_EVAL_STRICT_AUTHOR=0, exit 0" >&2
+      rm -f "$tmp_out"
       exit 0
+    else
+      cat "$tmp_out" >&2
+      rm -f "$tmp_out"
     fi
+  else
+    cat "$tmp_out" >&2
+    rm -f "$tmp_out"
   fi
+else
+  set +e
+  uvx --from 'skillevaluator[all] @ git+https://github.com/NVIDIA/SkillEvaluator.git' \
+    skillevaluator validate "$skills_root" \
+    --checks schema,pii,license,quality,unicode,lint \
+    --no-dedup \
+    --output-dir "$output_dir"
+  status=$?
+  set -e
 fi
 
 if [[ "$skills_root" == "$repo_root" ]] || [[ "$skills_root" == "$repo_root"/* && -n "$skill_filter" ]]; then
