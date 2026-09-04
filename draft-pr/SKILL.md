@@ -9,7 +9,9 @@ disable-model-invocation: true
 # Draft PR
 
 Ticket-linked squash PR. One report holds the exhaustive walkthrough, one tight description survives
-squash. A stranger with only `git log` understands the end, the approach, and the risk.
+squash. The code is the source of truth; the title plus description answers what a reviewer needs
+and decreases overload. A stranger with only `git log` understands the end, the approach, and the
+risk.
 
 ## Process
 
@@ -21,14 +23,16 @@ Run these steps in order.
   Use only these three sources.
 - **Report.** Produce one ticket-linked squash report, no gates. Open with the whole churn
   `+500 -120 | the whole PR`. Then cover the user-facing Why, then semantic chunks in order business
-  reason, approach, then mechanics. This step is complete when every changed file belongs to a chunk
-  and each chunk states its `+N -M | %`, files and lines, load-bearing lines, key decisions with
-  alternatives and tradeoffs, risks, and judgment calls like naming, scope cuts, inferred details,
-  placement, and deliberate omissions. Include deferred work and assumptions. Include Related
-  verbatim when the ticket was given.
+  reason, approach, then mechanics. Note which flows changed and what test evidence exists so the
+  Flows and Test coverage sections stay grounded. This step is complete when every changed file
+  belongs to a chunk and each chunk states its `+N -M | %`, files and lines, load-bearing lines, key
+  decisions with alternatives and tradeoffs, risks, and judgment calls like naming, scope cuts,
+  inferred details, placement, and deliberate omissions. Include deferred work and assumptions.
+  Include Related verbatim when the ticket was given.
 - **Propose.** Tighten the report into one ticket-linked squash title plus body. Keep detail in the
   report, not the draft. This step is complete when the draft is under 50 lines and each semantic
-  chunk maps to one bullet. Show proposal together with the report.
+  chunk maps to one bullet. Small PRs omit Flows and stay under 15 lines. Show proposal together
+  with the report.
 - **Refine once.** Use the question tool once to ask: approve as-is, edit in your own words, or give
   revision notes. Offer approve and revise choices and always leave room for your own words. Apply
   feedback, tighten, show updated title plus body. Loop only if you provide revisions.
@@ -43,59 +47,95 @@ Run these steps in order.
 
 Ticket-linked squash body. Report is unbounded, description is the reviewer summary and squash body.
 Keep the description under 50 lines for all sizes. Every line earns its place. Small PRs naturally
-stay shorter without padding.
+stay shorter without padding. Markdown only, no HTML artifacts. Answer the reviewer's basic
+questions in this order:
 
 Keep sections compact, use bullets when a section has multiple distinct points:
 
 - **Title.** One line, conventional commits `feat:`, `fix:`, etc. with optional scope `feat(scope):`
   when it clarifies the area, imperative and specific enough to stand alone in `git log` after
   squash. Include scope only when it makes sense.
-- **Related.** One markdown link to the verbatim ticket, e.g.
-  `[PROJ-123](https://tickets.example.com/PROJ-123)`, when the user provided one. Rendered as a
-  clickable link. Omit the section entirely when no ticket was given.
-- **Why.** The user-facing problem, who or what it affects, the current limitation, and the intended
-  outcome, grounded in ticket or context.
+- **Why.** One to three sentences. The user-facing problem, who or what it affects, and the intended
+  outcome, grounded in ticket or context. No bullets here unless the Why truly has distinct points.
 - **What changed.** One bullet per semantic chunk, in the user's words when available. Behavior
   introduced, scope or boundaries, and user-visible result.
-- **Key decisions.** One bullet per distinct decision. Chosen approach, alternative considered, why
-  it won, tradeoff or constraint accepted.
+- **Flows.** Include only when a reviewer needs the call order, data flow, or interaction to follow
+  the change. Otherwise omit the section entirely. Pick the smallest markdown-only visual that makes
+  the point, based on the diff content. Universal visuals render in GitHub and Azure DevOps web UI
+  and stay readable as plain text in the squash commit body and email:
+  - Logic or an algorithm as pseudocode in a plain fenced block.
+  - Runtime control flow as an indented call tree.
+  - UI structure as an indented component tree with only the state and boundaries that matter.
+  - File responsibility or a refactor as a shallow file tree.
+  - What changes and the surrounding shape already exists as a `diff` fenced block.
+  - Rich visual, only when participant interaction or branching is hard to follow as text: component
+    interaction, control flow, or data flow as Mermaid `sequenceDiagram` or `graph` in a fenced
+    `mermaid` block. Use the standard fenced syntax, never the `::: mermaid` container, so the same
+    block renders in GitHub and Azure DevOps Cloud pull requests. Stay inside the shared subset both
+    render: `sequenceDiagram` or `graph` only (never `flowchart`), simple node labels, no HTML tags,
+    no icons or Font Awesome, no LongArrow `---->`.
+  - Place each visual next to the short text it supports. A Mermaid block always needs a
+    one-sentence lead-in that still makes sense when the diagram does not render, such as in
+    `git log` or email. Keep only the calls, files, props, states, and boundaries needed to answer
+    the current change. Use one visual, two at most, never all of them. Prefer an ASCII tree when it
+    fits and reserve Mermaid for interaction flows. Show the whole block when most of it is new; use
+    `diff` shape when the point is what changed.
+- **Test coverage.** What was tested and why it matters, grouped by risk or flow rather than by file
+  list. Name the behavior or edge covered and why that check earns trust. Mention commands or suites
+  only when a reviewer needs them to reproduce.
 - **Risks and follow-ups.** Concrete risks, important assumptions, edge cases, rollout or
   compatibility concerns, work deliberately deferred.
+- **Related.** Last section. One markdown link to the verbatim ticket, e.g.
+  `[PROJ-123](https://tickets.example.com/PROJ-123)`, when the user provided one. Rendered as a
+  clickable link. Omit the section entirely when no ticket was given.
 
 Worked example:
 
 **Title.** `feat(reports): keep the user's sort order across sessions`
 
-**Related.** `[PROJ-123](https://tickets.example.com/PROJ-123)`
-
 **Why.**
 
-- Users lose their chosen sort order on every refresh.
-- The current in-memory state resets on reload, so the behavior is surprising and repetitive.
-- The change should preserve the preference without requiring an account or server-side setting.
+Users lose their chosen sort order on every refresh because the in-memory state resets on reload.
+This change preserves the preference locally so the report opens with the same view.
 
 **What changed.**
 
 - Sort order persisted to local storage.
 - Restored on startup, before first render.
 
-**Key decisions.**
+**Flows.**
 
-- **Storage:** Chose local storage over a server-side setting because it works for anonymous users,
-  avoids a round trip, and requires no schema change.
-- **Restore timing:** Restore before the first render so the UI does not briefly show the default
-  order and then jump to the saved one.
+Restore runs before the first paint so the UI never flashes the default order:
+
+```
+loadReport
+  restoreSortOrder
+    readLocalStorage
+  renderTable
+```
+
+**Test coverage.**
+
+- Restoring a saved order on reload, because that is the reported break.
+- Default order when nothing is stored, because first-run must stay sane.
 
 **Risks and follow-ups.**
 
 - A future rename of the stored key needs a migration.
 - Preferences remain device-local and will not follow users across browsers or devices.
 
+**Related.** `[PROJ-123](https://tickets.example.com/PROJ-123)`
+
 ## Drafting style
 
 - Every line earns its place. Cut anything that does not help a stranger review the PR or understand
-  the squash commit later.
+  the squash commit later. The code is the source of truth; the description points at it, it does
+  not retell it line by line.
 - No restating the obvious, no section header with a single sentence, no bullet under a bullet.
+- One visual at most in most PRs, two when flows truly diverge. No visual for typo, copy, or
+  single-line fixes.
+- Markdown only. Fenced code, call trees, file trees, `diff` blocks, and fenced `mermaid` blocks are
+  allowed. No HTML artifacts. Never use the `::: mermaid` container syntax.
 - Tighten after every change. The draft should never grow long just because the report did.
 
 ## Conventions
