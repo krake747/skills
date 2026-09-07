@@ -1,10 +1,11 @@
 ---
 name: draft-pr
 description: >-
-  Draft a squash PR title plus body after code-review. Use when you have a diff and need a
-  conventional title plus body that survives squash, in one report and one refine loop. Link tickets
-  only when the project defines a ticket convention. Triggers on: PR description, PR body, PR title,
-  draft PR, squash merge.
+  Draft, create, or update a PR with a squash-ready title plus body. Use when the user says draft a
+  pr, make a pr, create a pr, open a pr, or update a pr, or needs a PR title, description, or body,
+  including after code-review. Produce one report and one refine loop, then create or update the PR.
+  Link tickets only when the project defines a ticket convention. Triggers on: draft a pr, make a
+  pr, create a pr, open a pr, update pr, PR description, PR body, PR title, squash merge.
 ---
 
 # Draft PR
@@ -47,10 +48,16 @@ Run these steps in order.
   complete when every claim is traceable to the final diff or to ticket or context.
 - **Handoff.** Check which PR integration is available: an MCP integration for the host first, else
   the CLI tool for the host. Then load `references/github.md` when the PR lives on GitHub, or
-  `references/azure-devops.md` for Azure Repos, and follow that file. If an existing PR is known ask
-  whether to update it; if none exists ask whether to create one. Use the question tool for explicit
-  confirmation before changing or creating anything. Report the actual result. If you decline,
-  return the draft without an operation.
+  `references/azure-devops.md` for Azure Repos, and follow that file. Then resolve PR state for the
+  current branch:
+  1. Find the current branch with `git branch --show-current` and check whether a PR already exists
+     for it, using the existence check in the loaded reference. Use the repo default base unless the
+     user named one.
+  2. When a PR exists, update its title plus description or body from the approved reconciled draft
+     and report the number, URL, and that title plus description were updated.
+  3. When no PR exists, use the question tool to ask whether to create a draft PR or a ready public
+     PR, or to decline. Create with the chosen visibility and report the number plus URL. When
+     declined, return the draft without an operation.
 
 ## PR description template
 

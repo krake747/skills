@@ -13,7 +13,8 @@ Install mattpocock/skills first and run `/setup-matt-pocock-skills` once per rep
 set. The loop below is his, unchanged; these skills plug its gaps. He grills every change; I grill
 the big ones and let [plan-first](plan-first/SKILL.md) handle the small.
 [scaffold](scaffold/SKILL.md) and [happy-path](happy-path/SKILL.md) shape the build, and
-[draft-pr](draft-pr/SKILL.md) turns the reviewed diff into a PR description.
+[draft-pr](draft-pr/SKILL.md) turns the reviewed diff into a PR title plus body, then creates or
+updates the PR.
 
 1. **Align.** Big change: `/grill-me` or `/grill-with-docs`. Small change:
    [plan-first](plan-first/SKILL.md) hands you a 20-line plan instead of the interview.
@@ -22,8 +23,8 @@ the big ones and let [plan-first](plan-first/SKILL.md) handle the small.
    to the codebase's patterns; [happy-path](happy-path/SKILL.md) keeps the valid flow dominant as
    you go.
 4. **Review.** `/code-review` checks the diff against the spec. Then [draft-pr](draft-pr/SKILL.md)
-   analyzes the diff, reports context, decisions and risks, and proposes a squash-ready PR body to
-   refine in one loop.
+   analyzes the diff, reports context, decisions and risks, proposes a squash-ready PR body to
+   refine in one loop, then creates or updates the PR.
 5. **Prose, anywhere.** [humanize](humanize/SKILL.md) makes text the agent writes read like a person
    wrote it.
 
@@ -35,7 +36,7 @@ All skills fire on their own.
 | humanize   | agent      | Any prose the agent writes or edits                         |
 | scaffold   | agent      | Adding new code to an existing codebase                     |
 | happy-path | agent      | Starting an implementation, to keep the valid flow dominant |
-| draft-pr   | agent      | After code-review, to write the PR description              |
+| draft-pr   | agent      | Draft, create, or update a PR with title plus body          |
 
 ## Evaluation
 
@@ -54,6 +55,6 @@ for setup, scope, and the local Tier 2 command.
   and scaffold.
 - **[scaffold](scaffold/SKILL.md).** Match the codebase's existing patterns when writing new code.
   Complements codebase-design and implement.
-- **[draft-pr](draft-pr/SKILL.md).** Analyze the diff, report context, decisions and risks, and
-  propose a conventional PR title plus body that survives squash, to refine in one loop. Complements
-  code-review, which checks the diff rather than writing the PR's story.
+- **[draft-pr](draft-pr/SKILL.md).** Analyze the diff, report context, decisions and risks, propose
+  a conventional PR title plus body that survives squash, to refine in one loop, then create or
+  update the PR. Complements code-review, which checks the diff rather than writing the PR's story.
