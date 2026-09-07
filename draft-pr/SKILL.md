@@ -1,10 +1,10 @@
 ---
 name: draft-pr
-description:
+description: >-
   Draft a squash PR title plus body after code-review. Use when you have a diff and need a
   conventional title plus body that survives squash, in one report and one refine loop. Link tickets
-  only when the project defines a ticket convention.
-disable-model-invocation: true
+  only when the project defines a ticket convention. Triggers on: PR description, PR body, PR title,
+  draft PR, squash merge.
 ---
 
 # Draft PR

@@ -27,7 +27,7 @@ the big ones and let [plan-first](plan-first/SKILL.md) handle the small.
 5. **Prose, anywhere.** [humanize](humanize/SKILL.md) makes text the agent writes read like a person
    wrote it.
 
-Some skills fire on their own, some you must trigger.
+All skills fire on their own.
 
 | Skill      | Invoked by | When                                                        |
 | ---------- | ---------- | ----------------------------------------------------------- |
@@ -35,7 +35,7 @@ Some skills fire on their own, some you must trigger.
 | humanize   | agent      | Any prose the agent writes or edits                         |
 | scaffold   | agent      | Adding new code to an existing codebase                     |
 | happy-path | agent      | Starting an implementation, to keep the valid flow dominant |
-| draft-pr   | you        | After code-review, to write the PR description              |
+| draft-pr   | agent      | After code-review, to write the PR description              |
 
 ## Evaluation
 

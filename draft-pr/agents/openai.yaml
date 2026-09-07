@@ -1,5 +1,3 @@
 interface:
   display_name: "Draft PR"
-  short_description: "Ticket-linked conventional PR body for squash merges from a single analysis report"
-policy:
-  allow_implicit_invocation: false
+  short_description: "Draft squash-ready PR title plus body from a single analysis report"
