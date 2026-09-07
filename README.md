@@ -26,7 +26,8 @@ updates the PR.
    analyzes the diff, reports context, decisions and risks, proposes a squash-ready PR body to
    refine in one loop, then creates or updates the PR.
 5. **Prose, anywhere.** [humanize](humanize/SKILL.md) makes text the agent writes read like a person
-   wrote it.
+   wrote it. [instruct](instruct/SKILL.md) structures task docs (procedures, runbooks, guides)
+   before humanize sets the voice.
 
 All skills fire on their own.
 
@@ -37,6 +38,7 @@ All skills fire on their own.
 | scaffold   | agent      | Adding new code to an existing codebase                     |
 | happy-path | agent      | Starting an implementation, to keep the valid flow dominant |
 | draft-pr   | agent      | Draft, create, or update a PR with title plus body          |
+| instruct   | agent      | Write task docs with verb headings and done lines           |
 
 ## Evaluation
 
@@ -58,3 +60,6 @@ for setup, scope, and the local Tier 2 command.
 - **[draft-pr](draft-pr/SKILL.md).** Analyze the diff, report context, decisions and risks, propose
   a conventional PR title plus body that survives squash, to refine in one loop, then create or
   update the PR. Complements code-review, which checks the diff rather than writing the PR's story.
+- **[instruct](instruct/SKILL.md).** Write procedures, runbooks, guides, ops notes, ADRs, and docs
+  changes with verb headings, one action per line, and checkable done lines. Complements
+  writing-for-agents and pairs with humanize: instruct sets task structure, humanize sets voice.
