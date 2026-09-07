@@ -37,9 +37,9 @@ Run these steps in order.
   detail in the report, not the description. This step is complete when the description is under 50
   lines and each semantic chunk maps to one bullet. Small PRs omit all optional blocks and stay
   under 15 lines. Show proposal together with the report.
-- **Refine once.** Use the question tool once to ask: approve as-is, edit in your own words, or give
-  revision notes. Offer approve and revise choices and always leave room for your own words. Apply
-  feedback, tighten, show updated title plus body. Loop only if you provide revisions.
+- **Refine once.** Use the question tool once to ask whether to approve as-is, edit in your own
+  words, or give revision notes. Offer approve and revise choices and always leave room for your own
+  words. Apply feedback, tighten, show updated title plus body. Loop only if you provide revisions.
 - **Reconcile.** Re-read the final diff and check every line of the description against it. Drop
   anything no longer present, add anything the change does that no chunk covered. Verify removal and
   rename claims with `grep` (e.g. a claimed schema field removal must show a deletion hunk); a claim
@@ -77,8 +77,8 @@ parts:
    - **Flows.** Only when a reviewer needs call order or data flow. Pick the visual from
      `references/flows.md`. One visual per flow, two at most.
    - **Before/after.** Only for visual changes (direct or indirect) or benchmarks. Visual changes
-     show a table of before and after with uploaded images or video. Benchmarks show a table of
-     before (baseline from target branch) and after (candidate from the PR).
+     show a before/after table with uploaded images or video. Benchmarks compare baseline (target
+     branch) against candidate (from the PR).
    - **Storytelling.** Only for impressive, difficult, high-risk, or wide-scoped changes. Blog style
      with context, narrative, code samples, and diagrams as needed.
    - **Test coverage.** What was tested and why it matters, grouped by risk or flow. Name the
