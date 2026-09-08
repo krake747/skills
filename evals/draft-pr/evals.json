@@ -50,7 +50,7 @@
         "The description covers why, what changed, and risks or follow-ups",
         "The description includes the verbatim ticket link when provided",
         "Every material claim is traceable to the supplied context or diff",
-        "The description remains under 15 lines",
+        "The description stays compact with no filler and omits optional blocks",
         "Unsupported platform details and issue identifiers are not invented"
       ]
     },
@@ -68,7 +68,7 @@
         "The response names the files covered by each semantic chunk",
         "The response includes the verbatim ticket link under Related when provided",
         "The proposed title follows conventional commits",
-        "The description remains under 50 lines",
+        "The proposed body stays compact with no filler lines, one bullet per chunk",
         "The response does not invent a platform, issue number, or extra link"
       ]
     }

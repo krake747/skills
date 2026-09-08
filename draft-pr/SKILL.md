@@ -34,9 +34,9 @@ Run these steps in order.
   placement, and deliberate omissions. Include deferred work and assumptions. Include Related only
   when a project ticket convention applies and a ticket was given, in the project docs' format.
 - **Propose.** Tighten the report into one squash title plus body using the template below. Keep
-  detail in the report, not the description. This step is complete when the description is under 50
-  lines and each semantic chunk maps to one bullet. Small PRs omit all optional blocks and stay
-  under 15 lines. Show proposal together with the report.
+  detail in the report, not the description. This step is complete when each semantic chunk maps to
+  one bullet, every remaining line earns its place for a stranger reviewing or reading `git log`
+  later, and small PRs omit all optional blocks. Show proposal together with the report.
 - **Refine once.** Use the question tool once to ask whether to approve as-is, edit in your own
   words, or give revision notes. Offer approve and revise choices and always leave room for your own
   words. Apply feedback, tighten, show updated title plus body. Loop only if you provide revisions.
