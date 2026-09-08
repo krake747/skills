@@ -1,6 +1,6 @@
 ---
 name: scaffold
-description:
+description: >-
   Match the codebase's existing patterns when writing new code. Use when adding something new that
   should fit existing structure, not when editing code that already exists.
 ---
