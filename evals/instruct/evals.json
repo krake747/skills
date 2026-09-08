@@ -1,0 +1,45 @@
+{
+  "skill_name": "instruct",
+  "evals": [
+    {
+      "id": "instruct-runbook",
+      "prompt": "Fix the runbook in files/runbook.md so it follows task-doc structure: verb-led headings, one action per line, pointers with concept plus trigger, and a checkable done line.",
+      "expected_output": "A rewritten runbook with verb headings, split single-action lines, a triggered pointer, and a checkable done line with command plus expected result.",
+      "files": ["files/runbook.md"],
+      "assertions": [
+        "The output is a rewritten runbook, not a discussion of how to rewrite one",
+        "Every task heading starts with a verb, with no bare noun heading and no gerund task title",
+        "No bullet line holds two actions; fetch and confirm are split",
+        "The pointer names the concept plus its trigger instead of a bare See line",
+        "The procedure closes with a checkable done line naming the command plus its expected result",
+        "The output never closes with an adjective such as output looks correct"
+      ]
+    },
+    {
+      "id": "instruct-adr",
+      "prompt": "Review the ADR in files/adr.md for pointer and link structure: concept-plus-trigger pointers, named-concept links with section and why, filenames out of the decision body, and bans paired with a positive target.",
+      "expected_output": "A revised ADR with triggered pointers, a Doc link carrying section and why, literals out of the decision body, and a positive target for the guardrail.",
+      "files": ["files/adr.md"],
+      "assertions": [
+        "The output is a revised ADR or concrete rewritten lines, not general advice",
+        "No bare pointer without a trigger remains",
+        "The Doc link carries the section plus the why",
+        "Literal filenames, column names, or migration paths no longer sit in the decision body",
+        "The ban is paired with a positive target instead of a bare Do not copy",
+        "No vague Rules heading remains"
+      ]
+    },
+    {
+      "id": "instruct-voice-negative",
+      "prompt": "The text in files/announcement.md is a release announcement that needs natural voice, not task structure. If this is outside instruct scope, leave the structure alone and say so instead of forcing procedure format.",
+      "expected_output": "No procedure restructuring; the response states the text is voice work outside instruct scope and leaves headings, pointers, and done lines off.",
+      "files": ["files/announcement.md"],
+      "assertions": [
+        "The output does not impose verb-led task headings on the announcement",
+        "The output does not add pointers or done lines to the announcement",
+        "The output states the text is voice work outside instruct scope or defers to humanize",
+        "The output does not invent deployment steps or procedures"
+      ]
+    }
+  ]
+}

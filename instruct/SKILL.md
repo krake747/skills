@@ -1,12 +1,11 @@
 ---
 name: instruct
 description: >-
-  Instruct the reader with procedures, runbooks, guides, ops notes, ADRs, and docs changes. It
-  enforces task structure. Headings start with verbs. Each line holds one action. Pointers stay
-  positive and carry triggers. Each step closes with a checkable done line. Reach for it when the
-  work is a procedure or a runbook, a guide or an ops note, an ADR or a docs draft, a docs review or
-  a pointer check, done lines or task headings. Use it to fix headings, check pointers, or make docs
-  scannable and immediately useful. Complements humanize.
+  Use when writing or fixing task docs that tell the reader to do something: procedures, runbooks,
+  guides, ops notes, ADRs, docs diffs. Enforces task structure: verb headings, one action per line,
+  concept-plus-trigger pointers, positive targets, checkable done lines. Use it to fix headings,
+  check pointers, or make docs scannable and immediately useful. Triggers on: procedure, runbook,
+  guide, ops note, ADR, docs review, pointer check, done lines, task headings. Complements humanize.
 ---
 
 # Instruct
