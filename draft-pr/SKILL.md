@@ -75,7 +75,8 @@ parts:
    `What changed` header. One idea per bullet, one to two lines each.
 4. **Optional blocks, in this order, each omitted unless it earns its place:**
    - **Flows.** Only when a reviewer needs call order or data flow. Pick the visual from
-     `references/flows.md`. One visual per flow, two at most.
+     `references/flows.md`, which holds the bearer-pipeline graph example. One visual per flow, two
+     at most.
    - **Before/after.** Only for visual changes (direct or indirect) or benchmarks. Visual changes
      show a before/after table with uploaded images or video. Benchmarks compare baseline (target
      branch) against candidate (from the PR).
@@ -106,18 +107,7 @@ outcomes explicit so reviewers read the happy path first.
   included.
 - Effect skill notes updated: `Match` for branching, `Option` pipelines otherwise.
 
-Bearer now reads as one pipeline:
-
-```mermaid
-graph TD
-    token{tokenOption} -->|None| missing[rejected: missing_token]
-    token -->|Some| verify[verifySession]
-    verify -->|Some| auth[authenticated]
-    verify -->|None| unknown[rejected: unknown_session]
-    auth --> http[httpEffect]
-    missing --> r401[401]
-    unknown --> r401
-```
+Bearer now reads as one pipeline, see the bearer graph example in `references/flows.md`.
 
 The refactor above adds no behavior coverage, so it omits Test coverage. When coverage is added,
 keep each bullet to one behavior or regression:

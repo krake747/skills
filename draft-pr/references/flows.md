@@ -67,3 +67,18 @@ sequenceDiagram
     UI->>Daemon: send expanded prompt
     Daemon-->>UI: stream result
 ```
+
+State or shape relationships, with a lead-in that survives plain text:
+
+Bearer now reads as one pipeline:
+
+```mermaid
+graph TD
+    token{tokenOption} -->|None| missing[rejected: missing_token]
+    token -->|Some| verify[verifySession]
+    verify -->|Some| auth[authenticated]
+    verify -->|None| unknown[rejected: unknown_session]
+    auth --> http[httpEffect]
+    missing --> r401[401]
+    unknown --> r401
+```
