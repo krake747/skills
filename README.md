@@ -16,22 +16,22 @@ Update with: `npx skills update`.
 
 ### Plan
 
-Changing a plan takes seconds. Changing code takes minutes. For a small change, agree the approach
-first. Keep the plan short enough to read. Write open questions down instead of guessing them.
+Plans change in seconds, code in minutes. For a small change, agree the approach first. Keep the
+plan short enough to read. Write open questions down instead of guessing them.
 
-- **[plan-first](plan-first/SKILL.md).** A 20-line plan before code: possible approaches with
-  tradeoffs, one recommendation, open questions.
+- **[plan-first](plan-first/SKILL.md).** A 20-line plan before code. It compares approaches with
+  tradeoffs, makes one recommendation, and lists open questions.
 
 ### Build
 
 Readers judge new code against the code next to it. Match the existing patterns first. Then write
-the code so the reader mostly sees the normal path: clear types, named steps, data that does not
-change under you, bad input turned away early. Add a new piece only when it does real work.
+the code so the reader mostly sees the normal path. Use clear types and named steps. Keep data
+unchanged under the reader. Turn bad input away early. Add a new piece only when it does real work.
 
 - **[scaffold](scaffold/SKILL.md).** Match the codebase's patterns when writing new code. Copy the
   shape, not the code. Say out loud where you break from it and why.
-- **[happy-path](happy-path/SKILL.md).** Types first, normal path first: clear types, guard clauses
-  that turn bad input away early, no extra layers.
+- **[happy-path](happy-path/SKILL.md).** Types first, normal path first. Use clear types. Turn bad
+  input away early with guard clauses. Add no extra layers.
 
 ### Ship
 
@@ -39,14 +39,14 @@ Write one full report of the change. Then shrink it to a title plus body that st
 `git log`. Ask for one round of notes. Check every claim against the final diff. Then create or
 update the PR.
 
-- **[draft-pr](draft-pr/SKILL.md).** Draft, create, or update a PR with title plus body: report the
-  context, decisions, and risks, propose the title plus body, refine once, then ship it.
+- **[draft-pr](draft-pr/SKILL.md).** Draft, create, or update a PR with title plus body. It reports
+  context, decisions, and risks, proposes the title plus body, refines once, then ships it.
 
 ### Prose, anywhere
 
-Docs should tell the reader what to do. And read like a person wrote them. First make the structure
-clear: headings that start with verbs, one action per line, each step ending with how to check it.
-Then set the voice, without breaking any of that.
+Reading agent output all day is tiring. These two skills guide the agent to simpler terms: first
+clear structure (verb headings, one action per line, each step ending with how to check it), then a
+voice that reads like a person wrote it, without breaking any of that.
 
 - **[instruct](instruct/SKILL.md).** Write task docs with verb headings and done lines: procedures,
   runbooks, guides, ops notes, ADRs, and docs changes, one action per line, checkable done lines.
