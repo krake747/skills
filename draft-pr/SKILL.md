@@ -100,10 +100,11 @@ Worked example:
 Auth bearer flow used nested conditionals that hid the exhaustive cases. This change makes the valid
 outcomes explicit so reviewers read the happy path first.
 
-- Auth bearer flow is two exhaustive matches: token to `VerifyOutcome`, outcome to response.
-- Request id fallback, span annotations, and session outcome match on `Option` tags.
+- Two exhaustive matches carry the bearer flow: token to `VerifyOutcome`, outcome to response.
 - `stripPath` matches on `{ queryIndex, hashIndex }` shapes instead of nested `if`s.
-- Standards and effect skill record when `Match` applies and when `Option` pipelines stay.
+- Request id fallback and span annotations follow the `Option` tag pattern, session outcome
+  included.
+- Effect skill notes updated: `Match` for branching, `Option` pipelines otherwise.
 
 Bearer now reads as one pipeline:
 
@@ -124,7 +125,7 @@ keep each bullet to one behavior or regression:
 **Test coverage.**
 
 - Restores saved filters on reload, blocks filter reset regression.
-- Falls back to default order when nothing is stored, blocks first-run break.
+- Default order stays sane on first run with nothing stored.
 
 ## Body style
 
@@ -134,7 +135,9 @@ keep each bullet to one behavior or regression:
 - Bullets stay concise with no filler openers (`This change adds...`, `In addition...`). No second
   sentence unless it carries new information. A header introduces two or more points, never a single
   sentence. Test coverage bullets are stricter: one behavior or regression per line, shorter than
-  What changed.
+  What changed. Vary the first content word and the length across consecutive bullets; never repeat
+  the same tail clause on back-to-back bullets. The `-` marker itself is not the opener, so run
+  cliche checks on the rendered PR body, not the `SKILL.md` source.
 - Prefer the smallest visual that makes the point. Code samples and snippets (internals or sample
   usage) and code refs are allowed where they earn it. Keep one visual, two at most, never all of
   them. No visual for typo, copy, or single-line fixes.
@@ -151,6 +154,6 @@ keep each bullet to one behavior or regression:
   the ticket link when the project defines a ticket convention.
 - Stay platform-agnostic by default and omit Related. When project docs define ticket linking, they
   override: follow their format for links and close keywords.
-- Flag a simpler change when the code allows one.
+- When the code allows a simpler change, flag it.
 - Skip anything the user spelled out.
-- Include any extra context the user gave in the request.
+- Carry over any extra context the user gave in the request.
