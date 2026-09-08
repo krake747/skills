@@ -39,6 +39,18 @@
         "The workflow does not continue using an untyped raw payload",
         "The proposed design is smaller than an unnecessary abstraction layer"
       ]
+    },
+    {
+      "id": "happy-path-convention-negative",
+      "prompt": "Add a max-notional check to files/simple-handlers.ts following the existing plain-function style. This is convention-matching work; do not restructure the module into pipeline stages.",
+      "expected_output": "A new check in the same plain-function style, with the existing module left unrestructured and conventions credited to the neighboring code.",
+      "files": ["files/simple-handlers.ts"],
+      "assertions": [
+        "The new check follows the same plain-function style as checkMargin and isListed",
+        "The response does not restructure existing functions into named pipeline stages",
+        "The response does not add a module, interface, or dispatcher",
+        "The response states the work follows the existing conventions rather than imposing new shapes"
+      ]
     }
   ]
 }
