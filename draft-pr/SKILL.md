@@ -81,9 +81,12 @@ parts:
      branch) against candidate (from the PR).
    - **Storytelling.** Only for impressive, difficult, high-risk, or wide-scoped changes. Blog style
      with context, narrative, code samples, and diagrams as needed.
-   - **Test coverage.** What was tested and why it matters, grouped by risk or flow. Name the
-     behavior covered and add a `because` clause for why that check earns trust. Never run logs or
-     validation lists.
+   - **Test coverage.** Omit entirely unless the PR adds or changes behavior coverage. Each bullet
+     is one covered behavior or one blocked regression, one line, observable behavior first. Group
+     by flow or risk only when there are 5 or more. Prefer 5 to 8 short bullets over 3 to 4 long
+     ones. Never list lint, format, typecheck, build, githook or CI checks, commands run, logs, pass
+     counts, or suite names as coverage, e.g. never `pnpm lint:ts`, `csharpier check`,
+     `pnpm fmt:check`, `9 tests passed`. Uncovered paths belong in Risks and follow-ups, not here.
    - **Risks and follow-ups.** Concrete risks, assumptions, edge cases, rollout or compatibility
      concerns, work deliberately deferred.
    - **Related.** Last section, and only when the project defines a ticket convention and a ticket
@@ -115,6 +118,14 @@ graph TD
     unknown --> r401
 ```
 
+The refactor above adds no behavior coverage, so it omits Test coverage. When coverage is added,
+keep each bullet to one behavior or regression:
+
+**Test coverage.**
+
+- Restores saved filters on reload, blocks filter reset regression.
+- Falls back to default order when nothing is stored, blocks first-run break.
+
 ## Body style
 
 - Concise, never essays. Every line earns its place. Cut anything that does not help a stranger
@@ -122,7 +133,8 @@ graph TD
   report did.
 - Bullets stay concise with no filler openers (`This change adds...`, `In addition...`). No second
   sentence unless it carries new information. A header introduces two or more points, never a single
-  sentence.
+  sentence. Test coverage bullets are stricter: one behavior or regression per line, shorter than
+  What changed.
 - Prefer the smallest visual that makes the point. Code samples and snippets (internals or sample
   usage) and code refs are allowed where they earn it. Keep one visual, two at most, never all of
   them. No visual for typo, copy, or single-line fixes.
