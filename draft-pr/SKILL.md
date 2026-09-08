@@ -107,7 +107,7 @@ outcomes explicit so reviewers read the happy path first.
   included.
 - Effect skill notes updated: `Match` for branching, `Option` pipelines otherwise.
 
-Bearer now reads as one pipeline, see the bearer graph example in `references/flows.md`.
+Bearer now reads as one pipeline.
 
 The refactor above adds no behavior coverage, so it omits Test coverage. When coverage is added,
 keep each bullet to one behavior or regression:

@@ -56,8 +56,8 @@
     },
     {
       "id": "draft-pr-large",
-      "prompt": "Analyze the larger packet with multiple files and a migration, produce a single report then propose a squash-ready PR body that scales beyond 15 lines. Include the ticket verbatim and surface rollout and migration risk, then ask once to refine.",
-      "expected_output": "A scaled squash body that still covers why, what changed, decisions, and risks, with total churn and semantic chunks with files, and one refine question.",
+      "prompt": "Analyze the larger packet with multiple files and a migration, produce a single report then propose a compact squash-ready PR body covering multiple chunks. Include the ticket verbatim and surface rollout and migration risk, then ask once to refine.",
+      "expected_output": "A compact squash body that still covers why, what changed, decisions, and risks, with total churn and semantic chunks with files, and one refine question.",
       "files": [
         "files/large-pack/commits.txt",
         "files/large-pack/user-context.md",
