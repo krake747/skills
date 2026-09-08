@@ -64,6 +64,18 @@
         "The agent does not invent a comment or claim that it rewrote one",
         "The response is concise and professional"
       ]
+    },
+    {
+      "id": "humanize-structure-negative",
+      "prompt": "The text in files/runbook.md is a runbook with broken task structure: noun headings, two actions in one line, a bare pointer, no done line. That is structure work, not voice work. If this is outside humanize scope, leave the structure alone and say so instead of forcing a voice rewrite.",
+      "expected_output": "No voice restructuring; the response states the text is structure work outside humanize scope and leaves headings, pointers, and done lines off.",
+      "files": ["files/runbook.md"],
+      "assertions": [
+        "The output does not impose verb-led task headings on the runbook",
+        "The output does not add pointers or done lines to the runbook",
+        "The output states the text is structure work outside humanize scope or defers to instruct",
+        "The output does not invent deployment steps or procedures"
+      ]
     }
   ]
 }
