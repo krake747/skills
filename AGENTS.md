@@ -13,3 +13,14 @@ not cover.
   complements.
 - Run `pnpm fmt:check` before finishing; `pnpm fmt` to fix.
 - Test a skill by running it. An untested rule is a hypothesis.
+
+## Skill creation references
+
+- [Best practices](https://agentskills.io/skill-creation/best-practices.md): read when creating or
+  reshaping a skill. Scope, progressive disclosure (`references/`), gotchas, templates, checklists.
+- [Optimizing descriptions](https://agentskills.io/skill-creation/optimizing-descriptions.md): read
+  when writing or changing a `description` frontmatter field. Triggering accuracy.
+- [Evaluating skills](https://agentskills.io/skill-creation/evaluating-skills.md): read when adding
+  or changing `evals/`. Test cases, assertions, grading, iteration.
+- [Using scripts](https://agentskills.io/skill-creation/using-scripts.md): read when adding or
+  changing `scripts/`. Self-contained scripts, `--help`, structured output, exit codes.
