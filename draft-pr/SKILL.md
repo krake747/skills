@@ -1,11 +1,8 @@
 ---
 name: draft-pr
 description: >-
-  Draft, create, or update a PR with a squash-ready title plus body. Use when the user says draft a
-  pr, make a pr, create a pr, open a pr, or update a pr, or needs a PR title, description, or body,
-  including after code-review. Produce one report and one refine loop, then create or update the PR.
-  Link tickets only when the project defines a ticket convention. Triggers on: draft a pr, make a
-  pr, create a pr, open a pr, update pr, PR description, PR body, PR title, squash merge.
+  Draft, create, or update a squash-ready PR title plus body. Use when the user explicitly asks for
+  a PR.
 ---
 
 # Draft PR
