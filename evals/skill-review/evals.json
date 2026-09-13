@@ -1,0 +1,135 @@
+{
+  "skill_name": "skill-review",
+  "evals": [
+    {
+      "id": "skill-review-description",
+      "prompt": "Review the skill in files/bad-description.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "A report flagging the bloated description with its synonym stack, trigger list, and dangling references, ordered by severity with file and line evidence and no file edits.",
+      "files": ["files/bad-description.md"],
+      "assertions": [
+        "The output is a review report, not a rewritten skill",
+        "The output flags the synonym stack or trigger list in the description",
+        "The output flags over-triggering across unrelated work",
+        "The output flags the dangling /widget-pro references",
+        "The output cites file and line evidence",
+        "The output orders findings by severity, most severe first",
+        "No file is edited or created"
+      ]
+    },
+    {
+      "id": "skill-review-disclosure",
+      "prompt": "Review the skill in files/bad-disclosure.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "A report flagging the single-file layout with rarely needed sections inline, directing detail into references behind triggered pointers, ordered by severity.",
+      "files": ["files/bad-disclosure.md"],
+      "assertions": [
+        "The output is a review report, not a rewritten skill",
+        "The output flags missing progressive disclosure or context bloat",
+        "The output names which sections belong in references",
+        "The output asks for triggered pointers of the read X when Y form",
+        "The output cites file and line evidence",
+        "The output orders findings by severity, most severe first",
+        "No file is edited or created"
+      ]
+    },
+    {
+      "id": "skill-review-gates",
+      "prompt": "Review the skill in files/bad-gates.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "A report flagging the gated recipe, the contract language, and the double approval stops, ordered by severity with file and line evidence and no file edits.",
+      "files": ["files/bad-gates.md"],
+      "assertions": [
+        "The output is a review report, not a rewritten skill",
+        "The output flags the ordered gated steps or completeness clauses",
+        "The output flags the contract language as over-constraining",
+        "The output flags the double approval stops",
+        "The output cites file and line evidence",
+        "The output orders findings by severity, most severe first",
+        "No file is edited or created"
+      ]
+    },
+    {
+      "id": "skill-review-clean",
+      "prompt": "Review the skill in files/good-skill.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "A clean bill of health with at most minor notes, and no invented violations.",
+      "files": ["files/good-skill.md"],
+      "assertions": [
+        "The output states the skill passes or needs only minor notes",
+        "The output does not invent violations absent from the fixture",
+        "The output does not edit or rewrite the fixture",
+        "The output contains no em dash or en dash"
+      ]
+    },
+    {
+      "id": "skill-review-fragile",
+      "prompt": "Review the skill in files/good-fragile.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "No recipe finding: the exact sequence plus validation loop is fragility-calibrated prescriptiveness, stated as compliant.",
+      "files": ["files/good-fragile.md"],
+      "assertions": [
+        "The output does not flag the exact command sequence as a rigid recipe",
+        "The output does not flag the validation loop as a gated itinerary",
+        "The output states the prescriptiveness fits the fragile operation or passes the skill",
+        "The output does not edit or rewrite the fixture",
+        "The output contains no em dash or en dash"
+      ]
+    },
+    {
+      "id": "skill-review-vague",
+      "prompt": "Review the skill in files/bad-vague.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "A report flagging generic advice, the option menu with no default, and missing gotchas, checklist, and template, ordered by severity with file and line evidence.",
+      "files": ["files/bad-vague.md"],
+      "assertions": [
+        "The output is a review report, not a rewritten skill",
+        "The output flags generic advice or missing project-specific grounding",
+        "The output flags the option menu with no default",
+        "The output flags a missing gotcha, checklist, template, or default",
+        "The output cites file and line evidence",
+        "The output orders findings by severity, most severe first",
+        "No file is edited or created"
+      ]
+    },
+    {
+      "id": "skill-review-pointer-doc",
+      "prompt": "Review the pointer doc in files/bad-pointer-doc.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "A report flagging the staleness markers, the copied config block, and the unstructured procedure section, ordered by severity with file and line evidence.",
+      "files": ["files/bad-pointer-doc.md"],
+      "assertions": [
+        "The output is a review report, not a rewritten doc",
+        "The output flags a staleness marker such as the TODO note or the old version stamp",
+        "The output flags the copied config block instead of a link",
+        "The output flags the procedure section: noun heading, two actions in one line, bare pointer, or missing done line",
+        "The output cites file and line evidence",
+        "The output orders findings by severity, most severe first",
+        "No file is edited or created"
+      ]
+    },
+    {
+      "id": "skill-review-completion",
+      "prompt": "Review the skill in files/bad-completion.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "A report flagging the missing definition of done, the stop-for-review default on build work, and the blanket ban with no positive target, ordered by severity with file and line evidence.",
+      "files": ["files/bad-completion.md"],
+      "assertions": [
+        "The output is a review report, not a rewritten skill",
+        "The output flags the missing definition of done or early stop at the first draft",
+        "The output flags the stop-for-review default on work the user asked to be built",
+        "The output flags the blanket ban with no positive target",
+        "The output cites file and line evidence",
+        "The output orders findings by severity, most severe first",
+        "No file is edited or created"
+      ]
+    },
+    {
+      "id": "skill-review-agents",
+      "prompt": "Review the AGENTS.md in files/bad-agents.md against the skill quality checklist and report your findings. Do not edit the file.",
+      "expected_output": "A report flagging the blanket read before every edit, the blanket test and format runs, and the missing persistence grant, ordered by severity with file and line evidence.",
+      "files": ["files/bad-agents.md"],
+      "assertions": [
+        "The output is a review report, not a rewritten doc",
+        "The output flags the blanket read before every edit",
+        "The output flags the blanket test or format runs on every task",
+        "The output flags the missing persistence grant for safe local workflows",
+        "The output cites file and line evidence",
+        "The output orders findings by severity, most severe first",
+        "No file is edited or created"
+      ]
+    }
+  ]
+}

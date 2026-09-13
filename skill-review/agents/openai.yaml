@@ -1,0 +1,5 @@
+interface:
+  display_name: "Skill Review"
+  short_description: "Audit a skill or agent docs against the skill quality checklist, report only"
+policy:
+  allow_implicit_invocation: false

@@ -2,7 +2,8 @@
 name: humanize
 description: >-
   Write and polish prose: structure task docs first, then voice. Use when writing procedures,
-  runbooks, guides, ADRs, or polishing replies, summaries, docs, commit text. Not for code behavior.
+  runbooks, guides, ADRs, or polishing replies, summaries, docs, commit text. Not for reviewing or
+  auditing skills or docs; use skill-review for that. Not for code behavior.
 ---
 
 # Humanize
@@ -24,6 +25,7 @@ not stretch these rules to cover what they do not cover. It does not change code
 
 ## Do not use this skill when
 
+- The user asks to review or audit the text against a checklist; use skill-review for that.
 - The change is code behavior, not prose.
 
 ## The work

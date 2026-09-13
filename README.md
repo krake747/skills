@@ -51,6 +51,15 @@ that reads like a person wrote it, without breaking any of that.
 - **[humanize](humanize/SKILL.md).** Task docs with verb headings and done lines, plus any prose the
   agent writes or edits: procedures, runbooks, guides, ADRs, replies, summaries, docs, commit text.
 
+### Review
+
+Skills rot as models improve. This skill audits a skill or agent docs against the skill quality
+checklist and reports findings without changing files.
+
+- **[skill-review](skill-review/SKILL.md).** Review a skill or agent docs for trigger precision,
+  progressive disclosure, rigid recipes, and tentative stops. Report only, never edits. Complements
+  `writing-for-agents`.
+
 ## Evaluation
 
 Run the keyless Tier 1 quality checks for all skills with
