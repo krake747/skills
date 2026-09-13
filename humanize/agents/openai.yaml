@@ -1,3 +1,3 @@
 interface:
   display_name: "Humanize"
-  short_description: "Use when writing or editing prose: replies, summaries, commit messages, PR descriptions, READMEs, docs, comments, changelogs, release notes. Make prose read like a person wrote it"
+  short_description: "Write and polish prose: structure task docs first, then voice. Use for procedures, runbooks, guides, ADRs, replies, summaries, docs, commit text. Not for code"

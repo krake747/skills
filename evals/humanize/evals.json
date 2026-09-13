@@ -2,6 +2,48 @@
   "skill_name": "humanize",
   "evals": [
     {
+      "id": "humanize-runbook",
+      "prompt": "Fix the runbook in files/runbook.md so it follows task-doc structure: verb-led headings, one action per line, pointers with concept plus trigger, and a checkable done line.",
+      "expected_output": "A rewritten runbook with verb headings, split single-action lines, a triggered pointer, and a checkable done line with command plus expected result.",
+      "files": ["files/runbook.md"],
+      "assertions": [
+        "The output is a rewritten runbook, not a discussion of how to rewrite one",
+        "Every task heading starts with a verb, with no bare noun heading and no gerund task title",
+        "No bullet line holds two actions; fetch and confirm are split",
+        "The pointer names the concept plus its trigger instead of a bare See line",
+        "The procedure closes with a checkable done line naming the command plus its expected result",
+        "The output never closes with an adjective such as output looks correct"
+      ]
+    },
+    {
+      "id": "humanize-adr",
+      "prompt": "Review the ADR in files/adr.md for pointer and link structure: concept-plus-trigger pointers, named-concept links with section and why, filenames out of the decision body, and bans paired with a positive target.",
+      "expected_output": "A revised ADR with triggered pointers, a Doc link carrying section and why, literals out of the decision body, and a positive target for the guardrail.",
+      "files": ["files/adr.md"],
+      "assertions": [
+        "The output is a revised ADR or concrete rewritten lines, not general advice",
+        "No bare pointer without a trigger remains",
+        "The Doc link carries the section plus the why",
+        "Literal filenames, column names, or migration paths no longer sit in the decision body",
+        "The ban is paired with a positive target instead of a bare Do not copy",
+        "No vague Rules heading remains"
+      ]
+    },
+    {
+      "id": "humanize-announcement",
+      "prompt": "Polish the release announcement in files/announcement.md so it reads like a person wrote it. Keep the version, the CSV export, and the upload pipeline facts. Do not impose procedure format: no task headings, pointers, or done lines.",
+      "expected_output": "A plain-spoken announcement keeping v2.4.0, the CSV export, and the upload pipeline, with filler removed and no procedure structure added.",
+      "files": ["files/announcement.md"],
+      "assertions": [
+        "The output is a rewritten announcement, not a discussion of how to rewrite one",
+        "The output keeps version v2.4.0 and the CSV export",
+        "The output removes the phrases 'seamlessly' and 'Going forward'",
+        "The output does not add task headings, pointers, or done lines",
+        "The output does not invent deployment steps or procedures",
+        "The output contains no em dash or en dash"
+      ]
+    },
+    {
       "id": "humanize-commit",
       "prompt": "Rewrite the commit message in files/commit-message.txt so it is concise and readable. Preserve the implementation details and the conventional commit scope.",
       "expected_output": "A concise commit message that keeps the original scope and implementation details while removing filler and inflated wording.",
@@ -63,18 +105,6 @@
         "The agent asks the user to provide the comment text",
         "The agent does not invent a comment or claim that it rewrote one",
         "The response is concise and professional"
-      ]
-    },
-    {
-      "id": "humanize-structure-negative",
-      "prompt": "The text in files/runbook.md is a runbook with broken task structure: noun headings, two actions in one line, a bare pointer, no done line. That is structure work, not voice work. If this is outside humanize scope, leave the structure alone and say so instead of forcing a voice rewrite.",
-      "expected_output": "No voice restructuring; the response states the text is structure work outside humanize scope and leaves headings, pointers, and done lines off.",
-      "files": ["files/runbook.md"],
-      "assertions": [
-        "The output does not impose verb-led task headings on the runbook",
-        "The output does not add pointers or done lines to the runbook",
-        "The output states the text is structure work outside humanize scope or defers to instruct",
-        "The output does not invent deployment steps or procedures"
       ]
     }
   ]

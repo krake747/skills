@@ -26,9 +26,6 @@ Fail the draft if any of these remain.
 - Five similar-length sentences in a row.
 - Two paragraphs in a row opening on the same cue word.
 - A closing sermon.
-
-## The bar
-
-Delete any line that sounds assembled. Delete any sentence that repeats the one before it. Delete
-any sentence that exists to steer the reader's feelings. When in doubt, cut. Anything that performs
-without saying is defect.
+- A line that sounds assembled.
+- A sentence that repeats the one before it.
+- A sentence that exists to steer the reader's feelings.

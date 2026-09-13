@@ -44,14 +44,12 @@ update the PR.
 
 ### Prose, anywhere
 
-Reading agent output all day is tiring. These two skills guide the agent to simpler terms: first
-clear structure (verb headings, one action per line, each step ending with how to check it), then a
-voice that reads like a person wrote it, without breaking any of that.
+Reading agent output all day is tiring. This skill guides the agent to simpler terms: first clear
+structure (verb headings, one action per line, each step ending with how to check it), then a voice
+that reads like a person wrote it, without breaking any of that.
 
-- **[instruct](instruct/SKILL.md).** Write task docs with verb headings and done lines: procedures,
-  runbooks, guides, ops notes, ADRs, and docs changes, one action per line, checkable done lines.
-- **[humanize](humanize/SKILL.md).** Any prose the agent writes or edits. Rewrite it the way a
-  person would write it.
+- **[humanize](humanize/SKILL.md).** Task docs with verb headings and done lines, plus any prose the
+  agent writes or edits: procedures, runbooks, guides, ADRs, replies, summaries, docs, commit text.
 
 ## Evaluation
 

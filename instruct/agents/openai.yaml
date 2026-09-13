@@ -1,3 +1,0 @@
-interface:
-  display_name: "Instruct"
-  short_description: "Write task docs with verb headings, one action per line, and checkable done lines"

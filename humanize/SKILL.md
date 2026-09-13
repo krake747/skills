@@ -1,39 +1,53 @@
 ---
 name: humanize
 description: >-
-  Rewrite prose so it reads like a person wrote it. Use when polishing existing replies, summaries,
-  docs, or commit text. Not for task structure; use instruct for that.
+  Write and polish prose: structure task docs first, then voice. Use when writing procedures,
+  runbooks, guides, ADRs, or polishing replies, summaries, docs, commit text. Not for code behavior.
 ---
 
 # Humanize
 
-Model text performs. It performs importance, warmth, thoroughness, and cleverness. A person just
-says what happened. This skill makes writing stop performing and start saying.
+Write structure first, then voice. Make docs clear, direct, consistent, easy to scan, and
+immediately useful. Then make the writing stop performing and start saying.
 
-Run all five passes in order. A skipped pass is a defect.
+This is a contract. Break it and the work fails.
 
-This skill fixes sentences, not stories. Structure, tension, scene, and story shape belong to other
-books: Stern on shape, McKee on story. Do not stretch these passes to cover what they do not cover.
-For task structure (headings, done lines), use instruct.
+This skill covers task-doc structure and sentence voice only. It does not design pointer systems. Do
+not stretch these rules to cover what they do not cover. It does not change code behavior.
+
+## Use this skill when
+
+- The text tells the reader to do a task: a procedure, a runbook, a guide, an ops note, an ADR, or a
+  docs diff.
+- The text needs natural voice: replies, summaries, commit text, READMEs, posts, or announcements.
+- The user names a structure or voice concern: headings, pointers, done lines, or plain wording.
+
+## Do not use this skill when
+
+- The change is code behavior, not prose.
 
 ## The work
 
-Five passes, in order.
+Two phases, in order.
 
-1. Strip. Take out everything added to sound smart, kind, or serious.
-2. Swap. Trade each tell for its plain twin.
-3. Rebuild. Fix the sentence shapes that are AI by construction.
-4. Shape. Fix how sentences sit next to each other.
-5. Guard. Change nothing that carries meaning.
-
-Keep the meaning. Match the tone the writer intended. Use the smallest edit that removes the tell
-and leave the rest alone. If nothing was broken, change nothing.
+1. Structure. Verb headings, one action per line, concept-plus-trigger pointers, checkable done
+   lines. Fix the span, not the paragraph. If nothing breaks, change nothing.
+2. Voice. Five passes: strip filler, swap puffed words, rebuild AI shapes, fix rhythm, guard
+   meaning. Use the smallest edit that removes the tell and leave the rest alone.
 
 ## Pointers
 
-- Word tells: read `references/word-tells.md` when cutting filler or swapping puffed words.
-- Sentence shape: read `references/sentence-shape.md` when fixing sentence shapes or rhythm between
-  sentences.
-- Guard: read `references/guard.md` before deleting anything that might carry meaning.
-- Voice and bar: read `references/voice-and-bar.md` to restore voice and verify the output before
+- Task structure: read `references/structure-headings-actions.md` when fixing headings or splitting
+  lines.
+- Pointers and checks: read `references/structure-pointers-checks.md` when writing pointers,
+  targets, done lines, terms, or links.
+- Structure bar: read `references/structure-bar.md` to verify structure before finishing.
+- Word tells: read `references/voice-word-tells.md` when cutting filler or swapping puffed words.
+- Sentence shape: read `references/voice-sentence-shape.md` when fixing sentence shapes or rhythm
+  between sentences.
+- Guard: read `references/voice-guard.md` before deleting anything that might carry meaning.
+- Voice bar: read `references/voice-and-bar.md` to restore voice and verify the wording before
   finishing.
+
+Structure wins over rhythm in procedures. Parallel imperatives and repeated `Verify` openers are
+correct there; a voice pass keeps headings, triggers, and done lines intact.
